@@ -15,14 +15,21 @@ namespace ayy {
         virtual void onExit() override;
         
     private:
-        float _vertices[9] = {
-            -0.5f, -0.5f, 0.0f,
-             0.5f, -0.5f, 0.0f,
-             0.0f,  0.5f, 0.0f
+        float _vertices[12] = {
+            0.5f, 0.5f, 0.0f,   // 右上角
+            0.5f, -0.5f, 0.0f,  // 右下角
+            -0.5f, -0.5f, 0.0f, // 左下角
+            -0.5f, 0.5f, 0.0f   // 左上角
+        };
+        
+        unsigned int _indices[6] = {
+            0,1,3,  // 第一个三角形
+            1,2,3   // 第二个三角形
         };
         
         unsigned int _VBO;
         unsigned int _VAO;
+        unsigned int _EBO;
     
         ShaderProgram* _program = nullptr;
     };
