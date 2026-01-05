@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0F821D1E2F0C0A8F002425AE /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F821D1D2F0C0A8F002425AE /* IOKit.framework */; };
+		0F821D202F0C0A94002425AE /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F821D1F2F0C0A94002425AE /* AppKit.framework */; };
+		0F821D222F0C0A9D002425AE /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F821D212F0C0A9D002425AE /* CoreFoundation.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		0F821CC72F0ABD8C002425AE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -30,7 +36,23 @@
 
 /* Begin PBXFileReference section */
 		0F821CC92F0ABD8C002425AE /* learnopenglagain */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = learnopenglagain; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F821D1D2F0C0A8F002425AE /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		0F821D1F2F0C0A94002425AE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		0F821D212F0C0A9D002425AE /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0F821D1B2F0C09D2002425AE /* Exceptions for "learnopenglagain" folder in "learnopenglagain" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			attributesByRelativePath = {
+				"thirdparty/glfw_3_4/lib-universal/libglfw3.a" = (Required, );
+			};
+			membershipExceptions = (
+				"thirdparty/glfw_3_4/lib-universal/libglfw.3.dylib",
+			);
+			target = 0F821CC82F0ABD8C002425AE /* learnopenglagain */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 		0F821D062F0AC56A002425AE /* Exceptions for "learnopenglagain" folder in "Embed Libraries" phase from "learnopenglagain" target */ = {
@@ -49,6 +71,7 @@
 		0F821CCB2F0ABD8C002425AE /* learnopenglagain */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				0F821D1B2F0C09D2002425AE /* Exceptions for "learnopenglagain" folder in "learnopenglagain" target */,
 				0F821D062F0AC56A002425AE /* Exceptions for "learnopenglagain" folder in "Embed Libraries" phase from "learnopenglagain" target */,
 			);
 			path = learnopenglagain;
@@ -61,6 +84,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F821D222F0C0A9D002425AE /* CoreFoundation.framework in Frameworks */,
+				0F821D202F0C0A94002425AE /* AppKit.framework in Frameworks */,
+				0F821D1E2F0C0A8F002425AE /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +113,9 @@
 		0F821CF12F0AC10A002425AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F821D212F0C0A9D002425AE /* CoreFoundation.framework */,
+				0F821D1F2F0C0A94002425AE /* AppKit.framework */,
+				0F821D1D2F0C0A8F002425AE /* IOKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

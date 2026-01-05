@@ -2,6 +2,9 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include "Scene/BaseScene.h"
+#include "Scene/Lesson1.h"
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
@@ -36,20 +39,31 @@ int main(int argc, const char * argv[]) {
     }
     
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-
-
-    glViewport(0, 0, 800, 600);
-    glClearColor(0.4,0.5,0.0,1.0);
+    
+    
+    
+    ayy::BaseScene* scene = new ayy::Lesson1();
+    scene->onEnter();
+    
+    
+    glClearColor(0.0,0.0,0.0,1.0);
     
     while(!glfwWindowShouldClose(window))
     {
         glClear(GL_COLOR_BUFFER_BIT);
+        
+        scene->onUpdate(0.0f);
+        scene->onRender();
+        
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
     
+    scene->onExit();
+    delete scene;
+    scene = nullptr;
+    
     glfwTerminate();
-
     
 
     return 0;

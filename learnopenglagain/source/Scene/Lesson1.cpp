@@ -1,0 +1,75 @@
+#include "Lesson1.h"
+#include <glad/glad.h>
+
+namespace ayy {
+
+static const char* vertexShaderSource = R"(
+#version 330 core
+layout (location = 0) in vec3 aPos;
+void main()
+{
+   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+}
+)";
+
+static const char* fragmentShaderSource = R"(
+#version 330 core
+out vec4 FragColor;
+void main()
+{
+    FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
+} 
+)";
+
+Lesson1::Lesson1()
+{
+
+    glGenVertexArrays(1,&_VAO);
+    glGenBuffers(1,&_VBO);
+    
+    // 1. bind VAO
+    glBindVertexArray(_VAO);
+    // 2. bind VBO
+    glBindBuffer(GL_ARRAY_BUFFER,_VBO);
+    // 3. Copy vertex data to VBO. VBO is belong to binding VAO
+    glBufferData(GL_ARRAY_BUFFER,sizeof(_vertices),_vertices,GL_STATIC_DRAW);
+    // 4. Set Vertex attribute for binding VBO
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    
+    _program = new ShaderProgram(vertexShaderSource,fragmentShaderSource);
+    _program->compileLink();
+}
+
+Lesson1::~Lesson1()
+{
+    delete _program;
+    _program = nullptr;
+}
+
+
+void Lesson1::onEnter()
+{
+    
+}
+
+void Lesson1::onUpdate(float deltaTime)
+{
+    
+}
+
+void Lesson1::onRender()
+{
+    
+    _program->useProgram();
+    glBindVertexArray(_VAO);
+    glDrawArrays(GL_TRIANGLES,0,3);
+}
+
+void Lesson1::onExit()
+{
+    
+}
+
+}
