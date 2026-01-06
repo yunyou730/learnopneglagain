@@ -42,7 +42,7 @@ int main(int argc, const char * argv[]) {
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     
     //ayy::BaseScene* scene = new ayy::Lesson1();
-    ayy::BaseScene* scene = new ayy::Lesson2();
+    ayy::BaseScene* scene = new ayy::lesson2::Lesson2();
     scene->onEnter();
     
     glClearColor(0.0,0.0,0.0,1.0);

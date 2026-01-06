@@ -3,6 +3,7 @@
 #include "../Common/ShaderFileReader.h"
 
 namespace ayy {
+namespace lesson2 {
 
 Lesson2::Lesson2()
 {
@@ -21,11 +22,15 @@ Lesson2::Lesson2()
     glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(_indices),_indices,GL_STATIC_DRAW);
     
     // 4. Set Vertex attribute for binding VBO
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0); // 位置属性
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));// 颜色属性
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,
+                          sizeof(VertexAttribute),
+                          (void*)offsetof(VertexAttribute,x)); // 位置属性
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE,
+                          sizeof(VertexAttribute),
+                          (void*)offsetof(VertexAttribute,r));// 颜色属性
     glEnableVertexAttribArray(0);   // 开启 位置属性
     glEnableVertexAttribArray(1);   // 开启 颜色属性
-
+    
     std::string vertShaderCode = ShaderFileReader::readShaderCode("res/lesson2/test_vert.glsl");
     std::string fragShaderCode = ShaderFileReader::readShaderCode("res/lesson2/test_frag.glsl");
     _program = new ShaderProgram(vertShaderCode,fragShaderCode);
@@ -66,4 +71,5 @@ void Lesson2::onExit()
     
 }
 
+}
 }
