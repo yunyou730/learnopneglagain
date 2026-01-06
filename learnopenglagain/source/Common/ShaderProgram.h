@@ -15,9 +15,6 @@ public:
     
     unsigned int getProgram() const { return _program;}
     
-    
-    
-    
 private:
     unsigned int _vertexShader;
     unsigned int _fragmentShader;

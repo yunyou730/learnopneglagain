@@ -4,6 +4,7 @@
 
 #include "Scene/BaseScene.h"
 #include "Scene/Lesson1.h"
+#include "Scene/Lesson2.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
@@ -40,11 +41,9 @@ int main(int argc, const char * argv[]) {
     
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     
-    
-    
-    ayy::BaseScene* scene = new ayy::Lesson1();
+    //ayy::BaseScene* scene = new ayy::Lesson1();
+    ayy::BaseScene* scene = new ayy::Lesson2();
     scene->onEnter();
-    
     
     glClearColor(0.0,0.0,0.0,1.0);
     

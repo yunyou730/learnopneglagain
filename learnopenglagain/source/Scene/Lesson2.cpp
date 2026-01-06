@@ -1,29 +1,11 @@
-#include "Lesson1.h"
+#include "Lesson2.h"
 #include <glad/glad.h>
+#include "../Common/ShaderFileReader.h"
 
 namespace ayy {
 
-static const char* vertexShaderSource = R"(
-#version 330 core
-layout (location = 0) in vec3 aPos;
-void main()
+Lesson2::Lesson2()
 {
-   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
-}
-)";
-
-static const char* fragmentShaderSource = R"(
-#version 330 core
-out vec4 FragColor;
-void main()
-{
-    FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
-} 
-)";
-
-Lesson1::Lesson1()
-{
-
     glGenVertexArrays(1,&_VAO);
     glGenBuffers(1,&_VBO);
     glGenBuffers(1,&_EBO);
@@ -39,15 +21,18 @@ Lesson1::Lesson1()
     glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(_indices),_indices,GL_STATIC_DRAW);
     
     // 4. Set Vertex attribute for binding VBO
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0); // 位置属性
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));// 颜色属性
+    glEnableVertexAttribArray(0);   // 开启 位置属性
+    glEnableVertexAttribArray(1);   // 开启 颜色属性
 
-    
-    _program = new ShaderProgram(vertexShaderSource,fragmentShaderSource);
+    std::string vertShaderCode = ShaderFileReader::readShaderCode("res/lesson2/test_vert.glsl");
+    std::string fragShaderCode = ShaderFileReader::readShaderCode("res/lesson2/test_frag.glsl");
+    _program = new ShaderProgram(vertShaderCode,fragShaderCode);
     _program->compileLink();
 }
 
-Lesson1::~Lesson1()
+Lesson2::~Lesson2()
 {
     delete _program;
     _program = nullptr;
@@ -58,17 +43,17 @@ Lesson1::~Lesson1()
 }
 
 
-void Lesson1::onEnter()
+void Lesson2::onEnter()
 {
     
 }
 
-void Lesson1::onUpdate(float deltaTime)
+void Lesson2::onUpdate(float deltaTime)
 {
     
 }
 
-void Lesson1::onRender()
+void Lesson2::onRender()
 {
     _program->useProgram();
     glBindVertexArray(_VAO);
@@ -76,7 +61,7 @@ void Lesson1::onRender()
     glBindVertexArray(0);
 }
 
-void Lesson1::onExit()
+void Lesson2::onExit()
 {
     
 }
