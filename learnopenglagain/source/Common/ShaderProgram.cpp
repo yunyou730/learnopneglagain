@@ -72,5 +72,11 @@ void ShaderProgram::useProgram()
     glUseProgram(_program);
 }
 
+void ShaderProgram::setInt(const std::string& propName, int value)
+{
+    int location = glGetUniformLocation(_program,propName.c_str());
+	glUniform1i(location, value);
+}
+
 }
 

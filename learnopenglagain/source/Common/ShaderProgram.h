@@ -14,6 +14,8 @@ public:
     void useProgram();
     
     unsigned int getProgram() const { return _program;}
+
+    void setInt(const std::string& propName,int value);
     
 private:
     unsigned int _vertexShader;

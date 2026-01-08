@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Source Files\Scene">
       <UniqueIdentifier>{c3b60080-c2ab-4671-a0ed-1123fbed6acc}</UniqueIdentifier>
     </Filter>
@@ -24,6 +20,12 @@
     </Filter>
     <Filter Include="Source Files\ThirdParty\glad">
       <UniqueIdentifier>{29a33140-2612-4682-a4c2-9c26d9dedab7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{5ffd68bc-f27d-4efc-a7e6-b0b4fa5499f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res\lesson4">
+      <UniqueIdentifier>{cee91ec5-4d11-45fb-b0fc-a0c15d98267a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +56,9 @@
     <ClCompile Include="..\..\learnopenglagain\thirdparty\glad\src\glad.c">
       <Filter>Source Files\ThirdParty\glad</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson4.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\learnopenglagain\source\Scene\BaseScene.h">
@@ -83,5 +88,16 @@
     <ClInclude Include="..\..\learnopenglagain\thirdparty\glad\include\KHR\khrplatform.h">
       <Filter>Source Files\ThirdParty\glad</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson4.h">
+      <Filter>Source Files\Scene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\learnopenglagain\res\lesson4\vert.glsl">
+      <Filter>res\lesson4</Filter>
+    </None>
+    <None Include="..\..\learnopenglagain\res\lesson4\frag.glsl">
+      <Filter>res\lesson4</Filter>
+    </None>
   </ItemGroup>
 </Project>

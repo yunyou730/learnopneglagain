@@ -134,6 +134,7 @@
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson1.cpp" />
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson2.cpp" />
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson3.cpp" />
+    <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson4.cpp" />
     <ClCompile Include="..\..\learnopenglagain\thirdparty\glad\src\glad.c" />
   </ItemGroup>
   <ItemGroup>
@@ -144,8 +145,13 @@
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson1.h" />
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson2.h" />
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson3.h" />
+    <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson4.h" />
     <ClInclude Include="..\..\learnopenglagain\thirdparty\glad\include\glad\glad.h" />
     <ClInclude Include="..\..\learnopenglagain\thirdparty\glad\include\KHR\khrplatform.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\learnopenglagain\res\lesson4\frag.glsl" />
+    <None Include="..\..\learnopenglagain\res\lesson4\vert.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
