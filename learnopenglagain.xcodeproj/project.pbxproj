@@ -58,6 +58,9 @@
 			};
 			membershipExceptions = (
 				"thirdparty/glfw_3_4/lib-universal/libglfw.3.dylib",
+				"thirdparty/glfw_3_4/lib-win64-vc2022/glfw3_mt.lib",
+				"thirdparty/glfw_3_4/lib-win64-vc2022/glfw3.lib",
+				"thirdparty/glfw_3_4/lib-win64-vc2022/glfw3dll.lib",
 			);
 			target = 0F821CC82F0ABD8C002425AE /* learnopenglagain */;
 		};
@@ -350,6 +353,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/learnopenglagain/thirdparty/glfw_3_4/lib-universal",
+					"$(PROJECT_DIR)/learnopenglagain/thirdparty/glfw_3_4/lib-win64-vc2022",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -369,6 +373,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/learnopenglagain/thirdparty/glfw_3_4/lib-universal",
+					"$(PROJECT_DIR)/learnopenglagain/thirdparty/glfw_3_4/lib-win64-vc2022",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
