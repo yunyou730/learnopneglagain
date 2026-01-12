@@ -13,6 +13,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0D01E01B2F155B3C0048DEC4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = res/lesson4;
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F821CC72F0ABD8C002425AE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -67,6 +76,17 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		0D01E01D2F155B510048DEC4 /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 0D01E01B2F155B3C0048DEC4 /* CopyFiles */;
+			membershipExceptions = (
+				res/lesson4/awesomeface.png,
+				res/lesson4/container.jpg,
+				res/lesson4/frag.glsl,
+				res/lesson4/vert.glsl,
+				res/lesson4/wall.jpg,
+			);
+		};
 		0F821D062F0AC56A002425AE /* Exceptions for "learnopenglagain" folder in "Embed Libraries" phase from "learnopenglagain" target */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
 			attributesByRelativePath = {
@@ -103,9 +123,10 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				0F821D1B2F0C09D2002425AE /* Exceptions for "learnopenglagain" folder in "learnopenglagain" target */,
-				0F821D682F0CED97002425AE /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */,
 				0F821D062F0AC56A002425AE /* Exceptions for "learnopenglagain" folder in "Embed Libraries" phase from "learnopenglagain" target */,
+				0F821D682F0CED97002425AE /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */,
 				0FD8A11F2F0D671000A38130 /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */,
+				0D01E01D2F155B510048DEC4 /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */,
 			);
 			path = learnopenglagain;
 			sourceTree = "<group>";
@@ -162,9 +183,10 @@
 			buildPhases = (
 				0F821CC52F0ABD8C002425AE /* Sources */,
 				0F821CC62F0ABD8C002425AE /* Frameworks */,
-				0F821CC72F0ABD8C002425AE /* CopyFiles */,
 				0F821D052F0AC56A002425AE /* Embed Libraries */,
+				0F821CC72F0ABD8C002425AE /* CopyFiles */,
 				0FD8A11D2F0D66FE00A38130 /* CopyFiles */,
+				0D01E01B2F155B3C0048DEC4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
