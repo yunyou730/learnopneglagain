@@ -7,10 +7,20 @@
 #include "Scene/Lesson2.h"
 #include "Scene/Lesson3.h"
 #include "Scene/Lesson4.h"
+#include "Scene/Lesson5.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
+}
+
+float CalculateDeltaTime()
+{
+    static float lastFrame = static_cast<float>(glfwGetTime());
+    float currentFrame = static_cast<float>(glfwGetTime());
+    float deltaTime = currentFrame - lastFrame;
+    lastFrame = currentFrame;
+    return deltaTime;
 }
 
 int main(int argc, const char * argv[]) {
@@ -19,10 +29,7 @@ int main(int argc, const char * argv[]) {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-    
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    
     
     GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
     if (window == NULL)
@@ -32,8 +39,6 @@ int main(int argc, const char * argv[]) {
         return -1;
     }
     glfwMakeContextCurrent(window);
-    
-    
     
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
@@ -45,16 +50,18 @@ int main(int argc, const char * argv[]) {
     
     //ayy::BaseScene* scene = new ayy::Lesson1();
     //ayy::BaseScene* scene = new ayy::lesson3::Lesson3();
-    ayy::BaseScene* scene = new ayy::l4::Lesson4();
+    //ayy::BaseScene* scene = new ayy::l4::Lesson4();
+    ayy::BaseScene* scene = new ayy::l5::Lesson5();
     scene->onEnter();
     
-    glClearColor(0.0,0.0,0.0,1.0);
+//    glClearColor(0.0,0.0,0.0,1.0);
     
     while(!glfwWindowShouldClose(window))
     {
         glClear(GL_COLOR_BUFFER_BIT);
         
-        scene->onUpdate(0.0f);
+        float deltaTime = CalculateDeltaTime();
+        scene->onUpdate(deltaTime);
         scene->onRender();
         
         glfwSwapBuffers(window);

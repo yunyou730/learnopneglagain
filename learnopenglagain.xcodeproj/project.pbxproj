@@ -22,6 +22,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0D01E02E2F1562860048DEC4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = res/lesson5;
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F821CC72F0ABD8C002425AE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -70,6 +79,7 @@
 				"thirdparty/glfw_3_4/lib-win64-vc2022/glfw3_mt.lib",
 				"thirdparty/glfw_3_4/lib-win64-vc2022/glfw3.lib",
 				"thirdparty/glfw_3_4/lib-win64-vc2022/glfw3dll.lib",
+				thirdparty/glm/detail/dummy.cpp,
 			);
 			target = 0F821CC82F0ABD8C002425AE /* learnopenglagain */;
 		};
@@ -85,6 +95,16 @@
 				res/lesson4/frag.glsl,
 				res/lesson4/vert.glsl,
 				res/lesson4/wall.jpg,
+			);
+		};
+		0D01E0302F1562920048DEC4 /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 0D01E02E2F1562860048DEC4 /* CopyFiles */;
+			membershipExceptions = (
+				res/lesson5/awesomeface.png,
+				res/lesson5/container.jpg,
+				res/lesson5/frag.glsl,
+				res/lesson5/vert.glsl,
 			);
 		};
 		0F821D062F0AC56A002425AE /* Exceptions for "learnopenglagain" folder in "Embed Libraries" phase from "learnopenglagain" target */ = {
@@ -127,6 +147,7 @@
 				0F821D682F0CED97002425AE /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */,
 				0FD8A11F2F0D671000A38130 /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */,
 				0D01E01D2F155B510048DEC4 /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */,
+				0D01E0302F1562920048DEC4 /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */,
 			);
 			path = learnopenglagain;
 			sourceTree = "<group>";
@@ -187,6 +208,7 @@
 				0F821CC72F0ABD8C002425AE /* CopyFiles */,
 				0FD8A11D2F0D66FE00A38130 /* CopyFiles */,
 				0D01E01B2F155B3C0048DEC4 /* CopyFiles */,
+				0D01E02E2F1562860048DEC4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -371,6 +393,7 @@
 					learnopenglagain/thirdparty/glfw_3_4/include,
 					learnopenglagain/thirdparty/glad/include,
 					learnopenglagain/thirdparty/stb_image,
+					learnopenglagain/thirdparty/,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -391,6 +414,7 @@
 					learnopenglagain/thirdparty/glfw_3_4/include,
 					learnopenglagain/thirdparty/glad/include,
 					learnopenglagain/thirdparty/stb_image,
+					learnopenglagain/thirdparty/,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
