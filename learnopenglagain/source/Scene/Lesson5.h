@@ -52,7 +52,7 @@ private:
     Texture2D* _texture = nullptr;
     Texture2D* _subTexture = nullptr;
     
-    float _rotAngle = 0.0f;
+    float _rotDeg = 0.0f;
 };
 }
 }

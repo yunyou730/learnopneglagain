@@ -6,11 +6,12 @@ layout (location = 2) in vec2 aUV;
 out vec3 vColor;
 out vec2 vUV;
 
-unform mat4 u_Transform;
+uniform mat4 u_Transform;
 
 void main()
 {
     vColor = aColor;
     vUV = aUV;
+    
     gl_Position = u_Transform * vec4(aPos,1.0);
 }

@@ -2,7 +2,10 @@
 #include <glad/glad.h>
 #include "../Common/ShaderFileReader.h"
 #include "../Common/Texture2D.h"
-//#include "glm"
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 
 namespace ayy {
 namespace l5 {
@@ -39,13 +42,12 @@ void Lesson5::onEnter()
 
 void Lesson5::onUpdate(float deltaTime)
 {
-//    float _rotAngle = 0.0f;
-//    glm::mat4 trans;
-    
+    _rotDeg += deltaTime * 90.0f;
 }
 
 void Lesson5::onRender()
 {
+    
     glActiveTexture(GL_TEXTURE0);   // texture unit 0
     glBindTexture(GL_TEXTURE_2D, _texture->getTextureHandle());     // bind texture unit 0 with texture handle
 
@@ -55,6 +57,15 @@ void Lesson5::onRender()
     _program->useProgram();
 	_program->setInt("u_MainTex", 0);   // bind texture unit 0 to shader uniform
     _program->setInt("u_SecondTex", 1); // bind texture unit 1 to shader uniform
+    
+    // 注意，这里变换顺序的含义是,先 scale, 再 rotate, 最后 translate. 写起来要反着写
+    glm::mat4 trans(1.0f);
+    trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+    trans = glm::rotate(trans,glm::radians(_rotDeg),glm::vec3(0.0,0.0,1.0));
+    trans = glm::scale(trans,glm::vec3(0.5,0.5,0.5));
+    
+    unsigned int loc = glGetUniformLocation(_program->getProgram(),"u_Transform");
+    glUniformMatrix4fv(loc,1,GL_FALSE,glm::value_ptr(trans));
 
     glBindVertexArray(_VAO);
     glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT,0);
@@ -101,8 +112,8 @@ void Lesson5::initVertexData()
 
 void Lesson5::initShader()
 {
-    std::string vertShaderCode = ShaderFileReader::readShaderCode("res/lesson4/vert.glsl");
-    std::string fragShaderCode = ShaderFileReader::readShaderCode("res/lesson4/frag.glsl");
+    std::string vertShaderCode = ShaderFileReader::readShaderCode("res/lesson5/vert.glsl");
+    std::string fragShaderCode = ShaderFileReader::readShaderCode("res/lesson5/frag.glsl");
     _program = new ShaderProgram(vertShaderCode,fragShaderCode);
     _program->compileLink();
 }

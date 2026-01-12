@@ -11,5 +11,5 @@ void main()
 {
     vec4 texCol = texture(u_MainTex,vUV);
     vec4 texCol2 = texture(u_SecondTex,vUV);
-    FragColor = mix(texCol,texCol2,0.5) * vec4(vColor,1.0);
+    FragColor = mix(texCol,texCol2,0.5);
 }
