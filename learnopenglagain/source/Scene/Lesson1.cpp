@@ -70,6 +70,7 @@ void Lesson1::onUpdate(float deltaTime)
 
 void Lesson1::onRender()
 {
+    glClear(GL_COLOR_BUFFER_BIT);
     _program->useProgram();
     glBindVertexArray(_VAO);
     glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT,0);

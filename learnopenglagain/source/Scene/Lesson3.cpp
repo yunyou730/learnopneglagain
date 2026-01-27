@@ -40,6 +40,7 @@ void Lesson3::onUpdate(float deltaTime)
 
 void Lesson3::onRender()
 {
+    glClear(GL_COLOR_BUFFER_BIT);
     glBindTexture(GL_TEXTURE_2D, _texture->getTextureHandle());
     _program->useProgram();
     glBindVertexArray(_VAO);

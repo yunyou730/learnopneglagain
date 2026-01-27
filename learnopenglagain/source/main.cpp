@@ -67,8 +67,6 @@ int main(int argc, const char * argv[]) {
     g_scene = new ayy::l6::Lesson6(windowWidth, windowHeight);
     g_scene->onEnter();
     
-//    glClearColor(0.0,0.0,0.0,1.0);
-    
     while(!glfwWindowShouldClose(window))
     {
         glClear(GL_COLOR_BUFFER_BIT);

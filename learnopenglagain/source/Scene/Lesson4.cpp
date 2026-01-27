@@ -44,6 +44,8 @@ void Lesson4::onUpdate(float deltaTime)
 
 void Lesson4::onRender()
 {
+    glClear(GL_COLOR_BUFFER_BIT);
+
     glActiveTexture(GL_TEXTURE0);   // texture unit 0
     glBindTexture(GL_TEXTURE_2D, _texture->getTextureHandle());     // bind texture unit 0 with texture handle
 

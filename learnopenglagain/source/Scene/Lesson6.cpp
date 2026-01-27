@@ -19,7 +19,7 @@ Lesson6::~Lesson6()
     
     glDeleteVertexArrays(1,&_VAO);
     glDeleteBuffers(1,&_VBO);
-    glDeleteBuffers(1,&_EBO);
+    //glDeleteBuffers(1,&_EBO);
     
     delete _texture;
     _texture = nullptr;
@@ -32,6 +32,7 @@ Lesson6::~Lesson6()
 void Lesson6::onEnter()
 {
     glClearColor(0.5,0.8,0.2,1.0);
+
     initShader();
     initVertexData();
     initTexture();
@@ -40,7 +41,6 @@ void Lesson6::onEnter()
     _model = glm::rotate(identity,glm::radians(-55.0f),glm::vec3(1.0f,0.0f,0.0f));
 	_view = glm::translate(identity, glm::vec3(0.0f, 0.0f, -3.0f));
 	_projection = glm::perspective(glm::radians(45.0f), (float)_windowWidth / (float)_windowHeight, 0.1f, 100.0f);
-
 }
 
 void Lesson6::initVertexData()
@@ -48,32 +48,24 @@ void Lesson6::initVertexData()
     // vertex data
     glGenVertexArrays(1, &_VAO);
     glGenBuffers(1, &_VBO);
-    glGenBuffers(1, &_EBO);
+    //glGenBuffers(1, &_EBO);
 
     // 1. bind VAO
     glBindVertexArray(_VAO);
     // 2. bind VBO, fill buffer data
     glBindBuffer(GL_ARRAY_BUFFER, _VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(_vertices), _vertices, GL_STATIC_DRAW);
-
-    // 3. bind EBO, fill buffer data
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(_indices), _indices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(_boxVertices), _boxVertices, GL_STATIC_DRAW);
 
     // 4. Set Vertex attribute for binding VBO
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,
-        sizeof(VertexAttribute),
-        (void*)offsetof(VertexAttribute, x)); // 位置属性
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE,
-        sizeof(VertexAttribute),
-        (void*)offsetof(VertexAttribute, r));// 颜色属性
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE,
-        sizeof(VertexAttribute),
-        (void*)offsetof(VertexAttribute, u));// uv
+        sizeof(VertexAttributePosUV),
+        (void*)offsetof(VertexAttributePosUV, x)); // 位置属性
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE,
+        sizeof(VertexAttributePosUV),
+        (void*)offsetof(VertexAttributePosUV, u));// uv
 
     glEnableVertexAttribArray(0);   // 开启 位置属性
-    glEnableVertexAttribArray(1);   // 开启 颜色属性
-    glEnableVertexAttribArray(2);   // 开启 UV
+    glEnableVertexAttribArray(1);   // 开启 UV
 }
 
 void Lesson6::initShader()
@@ -97,11 +89,15 @@ void Lesson6::initTexture()
 void Lesson6::onUpdate(float deltaTime)
 {
     _rotDeg += deltaTime * 90.0f;
+    _model = glm::rotate(glm::mat4(1.0f), glm::radians(_rotDeg), glm::vec3(0.5f, 1.0f, 0.0f));
+    _projection = glm::perspective(glm::radians(45.0f), (float)_windowWidth / (float)_windowHeight, 0.1f, 100.0f);
 }
 
 void Lesson6::onRender()
 {
-    
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+
     glActiveTexture(GL_TEXTURE0);   // texture unit 0
     glBindTexture(GL_TEXTURE_2D, _texture->getTextureHandle());     // bind texture unit 0 with texture handle
 
@@ -123,8 +119,10 @@ void Lesson6::onRender()
     glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(_projection));
 
     // Do DrawCall
+    glEnable(GL_DEPTH_TEST);
     glBindVertexArray(_VAO);
-    glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT,0);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+
     glBindVertexArray(0);
 }
 
