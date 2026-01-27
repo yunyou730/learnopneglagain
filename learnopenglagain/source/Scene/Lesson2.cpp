@@ -5,7 +5,8 @@
 namespace ayy {
 namespace lesson2 {
 
-Lesson2::Lesson2()
+Lesson2::Lesson2(int width, int height)
+    :BaseScene(width,height)
 {
     glGenVertexArrays(1,&_VAO);
     glGenBuffers(1,&_VBO);

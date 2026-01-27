@@ -6,7 +6,7 @@ namespace ayy {
     class Lesson1 : public BaseScene
     {
     public:
-        Lesson1();
+        Lesson1(int width, int height);
         virtual ~Lesson1();
         
         virtual void onEnter() override;

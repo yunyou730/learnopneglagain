@@ -1,22 +1,18 @@
-#include "Lesson5.h"
+#include "Lesson6.h"
 #include <glad/glad.h>
 #include "../Common/ShaderFileReader.h"
 #include "../Common/Texture2D.h"
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-
 
 namespace ayy {
-namespace l5 {
+namespace l6 {
 
-Lesson5::Lesson5(int width, int height)
+Lesson6::Lesson6(int width, int height)
 	:BaseScene(width, height)
 {
 
 }
 
-Lesson5::~Lesson5()
+Lesson6::~Lesson6()
 {
     delete _program;
     _program = nullptr;
@@ -33,15 +29,21 @@ Lesson5::~Lesson5()
 }
 
 
-void Lesson5::onEnter()
+void Lesson6::onEnter()
 {
     glClearColor(0.5,0.8,0.2,1.0);
     initShader();
     initVertexData();
     initTexture();
+
+    glm::mat4 identity(1.0f);
+    _model = glm::rotate(identity,glm::radians(-55.0f),glm::vec3(1.0f,0.0f,0.0f));
+	_view = glm::translate(identity, glm::vec3(0.0f, 0.0f, -3.0f));
+	_projection = glm::perspective(glm::radians(45.0f), (float)_windowWidth / (float)_windowHeight, 0.1f, 100.0f);
+
 }
 
-void Lesson5::initVertexData()
+void Lesson6::initVertexData()
 {
     // vertex data
     glGenVertexArrays(1, &_VAO);
@@ -74,30 +76,30 @@ void Lesson5::initVertexData()
     glEnableVertexAttribArray(2);   // 开启 UV
 }
 
-void Lesson5::initShader()
+void Lesson6::initShader()
 {
-    std::string vertShaderCode = ShaderFileReader::readShaderCode("res/lesson5/vert.glsl");
-    std::string fragShaderCode = ShaderFileReader::readShaderCode("res/lesson5/frag.glsl");
+    std::string vertShaderCode = ShaderFileReader::readShaderCode("res/lesson6/vert.glsl");
+    std::string fragShaderCode = ShaderFileReader::readShaderCode("res/lesson6/frag.glsl");
     _program = new ShaderProgram(vertShaderCode, fragShaderCode);
     _program->compileLink();
 }
 
-void Lesson5::initTexture()
+void Lesson6::initTexture()
 {
     _texture = new Texture2D();
-    _texture->load("res/lesson4/container.jpg");
+    _texture->load("res/common/container.jpg");
 
     _subTexture = new Texture2D();
-    _subTexture->load("res/lesson4/awesomeface.png");
+    _subTexture->load("res/common/awesomeface.png");
 }
 
 
-void Lesson5::onUpdate(float deltaTime)
+void Lesson6::onUpdate(float deltaTime)
 {
     _rotDeg += deltaTime * 90.0f;
 }
 
-void Lesson5::onRender()
+void Lesson6::onRender()
 {
     
     glActiveTexture(GL_TEXTURE0);   // texture unit 0
@@ -110,21 +112,23 @@ void Lesson5::onRender()
 	_program->setInt("u_MainTex", 0);   // bind texture unit 0 to shader uniform
     _program->setInt("u_SecondTex", 1); // bind texture unit 1 to shader uniform
     
-    // 注意，这里变换顺序的含义是,先 scale, 再 rotate, 最后 translate. 写起来要反着写
-    glm::mat4 trans(1.0f);
-    trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
-    trans = glm::rotate(trans,glm::radians(_rotDeg),glm::vec3(0.0,0.0,1.0));
-    trans = glm::scale(trans,glm::vec3(0.5,0.5,0.5));
-    
-    unsigned int loc = glGetUniformLocation(_program->getProgram(),"u_Transform");
-    glUniformMatrix4fv(loc,1,GL_FALSE,glm::value_ptr(trans));
+    // MVP 矩阵
+    unsigned int loc = glGetUniformLocation(_program->getProgram(), "u_Model");
+    glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(_model));
 
+    loc = glGetUniformLocation(_program->getProgram(), "u_View");
+    glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(_view));
+
+    loc = glGetUniformLocation(_program->getProgram(), "u_Projection");
+    glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(_projection));
+
+    // Do DrawCall
     glBindVertexArray(_VAO);
     glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT,0);
     glBindVertexArray(0);
 }
 
-void Lesson5::onExit()
+void Lesson6::onExit()
 {
     
 }

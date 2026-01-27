@@ -1,12 +1,15 @@
 #pragma once
 #include "BaseScene.h"
 #include "../Common/ShaderProgram.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 namespace ayy {
 
 class Texture2D;
 
-namespace l4 {
+namespace l6 {
 struct VertexAttribute
 {
     float x,y,z;
@@ -14,11 +17,11 @@ struct VertexAttribute
     float u,v;
 };
 
-class Lesson4 : public BaseScene
+class Lesson6 : public BaseScene
 {
 public:
-    Lesson4(int width, int height);
-    virtual ~Lesson4();
+    Lesson6(int width, int height);
+    virtual ~Lesson6();
     
     virtual void onEnter() override;
     virtual void onUpdate(float deltaTime) override;
@@ -51,6 +54,13 @@ private:
     
     Texture2D* _texture = nullptr;
     Texture2D* _subTexture = nullptr;
+    
+    float _rotDeg = 0.0f;
+
+    // mvp matrix
+    glm::mat4 _model;
+    glm::mat4 _view;
+    glm::mat4 _projection;
 };
 }
 }

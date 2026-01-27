@@ -17,7 +17,7 @@ struct VertexAttribute
 class Lesson5 : public BaseScene
 {
 public:
-    Lesson5();
+    Lesson5(int width, int height);
     virtual ~Lesson5();
     
     virtual void onEnter() override;

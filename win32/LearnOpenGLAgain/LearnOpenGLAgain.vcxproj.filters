@@ -36,6 +36,12 @@
     <Filter Include="ThirdParty\glad">
       <UniqueIdentifier>{29a33140-2612-4682-a4c2-9c26d9dedab7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="res\lesson6">
+      <UniqueIdentifier>{ffa7f04c-5d3d-4f0c-a7f7-f403fa6aecf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res\common">
+      <UniqueIdentifier>{804c631e-e359-4afa-abfd-70998d3acaa7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\learnopenglagain\source\main.cpp">
@@ -69,6 +75,9 @@
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson5.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson6.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
   </ItemGroup>
@@ -106,6 +115,9 @@
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson5.h">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson6.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\learnopenglagain\res\lesson4\vert.glsl">
@@ -120,6 +132,12 @@
     <None Include="..\..\learnopenglagain\res\lesson5\vert.glsl">
       <Filter>res\lesson5</Filter>
     </None>
+    <None Include="..\..\learnopenglagain\res\lesson6\vert.glsl">
+      <Filter>res\lesson6</Filter>
+    </None>
+    <None Include="..\..\learnopenglagain\res\lesson6\frag.glsl">
+      <Filter>res\lesson6</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\learnopenglagain\res\lesson5\awesomeface.png">
@@ -127,6 +145,15 @@
     </Image>
     <Image Include="..\..\learnopenglagain\res\lesson5\container.jpg">
       <Filter>res\lesson5</Filter>
+    </Image>
+    <Image Include="..\..\learnopenglagain\res\common\wall.jpg">
+      <Filter>res\common</Filter>
+    </Image>
+    <Image Include="..\..\learnopenglagain\res\common\awesomeface.png">
+      <Filter>res\common</Filter>
+    </Image>
+    <Image Include="..\..\learnopenglagain\res\common\container.jpg">
+      <Filter>res\common</Filter>
     </Image>
   </ItemGroup>
 </Project>

@@ -6,7 +6,8 @@
 namespace ayy {
 namespace lesson3 {
 
-Lesson3::Lesson3()
+Lesson3::Lesson3(int width, int height)
+	:BaseScene(width, height)
 {
 
 }
