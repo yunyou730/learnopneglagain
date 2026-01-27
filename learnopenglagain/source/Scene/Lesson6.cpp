@@ -19,8 +19,7 @@ Lesson6::~Lesson6()
     
     glDeleteVertexArrays(1,&_VAO);
     glDeleteBuffers(1,&_VBO);
-    //glDeleteBuffers(1,&_EBO);
-    
+
     delete _texture;
     _texture = nullptr;
 
@@ -38,7 +37,6 @@ void Lesson6::onEnter()
     initTexture();
 
     glm::mat4 identity(1.0f);
-    _model = glm::rotate(identity,glm::radians(-55.0f),glm::vec3(1.0f,0.0f,0.0f));
 	_view = glm::translate(identity, glm::vec3(0.0f, 0.0f, -3.0f));
 	_projection = glm::perspective(glm::radians(45.0f), (float)_windowWidth / (float)_windowHeight, 0.1f, 100.0f);
 }
@@ -88,15 +86,13 @@ void Lesson6::initTexture()
 
 void Lesson6::onUpdate(float deltaTime)
 {
-    _rotDeg += deltaTime * 90.0f;
-    _model = glm::rotate(glm::mat4(1.0f), glm::radians(_rotDeg), glm::vec3(0.5f, 1.0f, 0.0f));
+    _rotDeg += deltaTime * 35.0f;
     _projection = glm::perspective(glm::radians(45.0f), (float)_windowWidth / (float)_windowHeight, 0.1f, 100.0f);
 }
 
 void Lesson6::onRender()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 
     glActiveTexture(GL_TEXTURE0);   // texture unit 0
     glBindTexture(GL_TEXTURE_2D, _texture->getTextureHandle());     // bind texture unit 0 with texture handle
@@ -107,21 +103,32 @@ void Lesson6::onRender()
     _program->useProgram();
 	_program->setInt("u_MainTex", 0);   // bind texture unit 0 to shader uniform
     _program->setInt("u_SecondTex", 1); // bind texture unit 1 to shader uniform
+
+    for (int i = 0;i < 10;i++)
+    {
+        // 缩放 + 平移
+		glm::mat4 model(1.0f);
+		model = glm::translate(model, _cubePositions[i]);
+        float angle = _rotDeg * (i + 1);
+        model = glm::rotate(model,glm::radians(angle),glm::vec3(1.0f,0.3f,0.5f));
+
+        // MVP 矩阵
+        unsigned int loc = glGetUniformLocation(_program->getProgram(), "u_Model");
+        glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(model));
+
+        loc = glGetUniformLocation(_program->getProgram(), "u_View");
+        glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(_view));
+
+        loc = glGetUniformLocation(_program->getProgram(), "u_Projection");
+        glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(_projection));
+
+        // Do DrawCall
+        glEnable(GL_DEPTH_TEST);
+        glBindVertexArray(_VAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+    }
+
     
-    // MVP 矩阵
-    unsigned int loc = glGetUniformLocation(_program->getProgram(), "u_Model");
-    glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(_model));
-
-    loc = glGetUniformLocation(_program->getProgram(), "u_View");
-    glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(_view));
-
-    loc = glGetUniformLocation(_program->getProgram(), "u_Projection");
-    glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(_projection));
-
-    // Do DrawCall
-    glEnable(GL_DEPTH_TEST);
-    glBindVertexArray(_VAO);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
 
     glBindVertexArray(0);
 }
