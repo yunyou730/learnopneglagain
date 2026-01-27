@@ -2,6 +2,7 @@
 #include <glad/glad.h>
 #include "../Common/ShaderFileReader.h"
 #include "../Common/Texture2D.h"
+#include <glm_0_9_8/glm.hpp>
 
 namespace ayy {
 namespace l4 {
@@ -110,6 +111,9 @@ void Lesson4::initTexture()
 
 	_subTexture = new Texture2D();
     _subTexture->load("res/lesson4/awesomeface.png");
+
+	glm::mat4 identity = glm::mat4(1.0f);
+ //   glm::mat4 identity = glm::mat4();
 }
 
 }
