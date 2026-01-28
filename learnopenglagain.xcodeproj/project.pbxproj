@@ -13,31 +13,54 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		0D01E01B2F155B3C0048DEC4 /* CopyFiles */ = {
+		0D01E01B2F155B3C0048DEC4 /* Copy Files - lesson4 */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = res/lesson4;
 			dstSubfolderSpec = 16;
 			files = (
 			);
+			name = "Copy Files - lesson4";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0D01E02E2F1562860048DEC4 /* CopyFiles */ = {
+		0D01E02E2F1562860048DEC4 /* Copy Files - lesson5 */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = res/lesson5;
 			dstSubfolderSpec = 16;
 			files = (
 			);
+			name = "Copy Files - lesson5";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0F821CC72F0ABD8C002425AE /* CopyFiles */ = {
+		0DAAD7C82F2A621F00B3595F /* Copy Files - lesson6 */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = res/lesson6;
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Copy Files - lesson6";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0DAAD7CC2F2A626300B3595F /* Copy Files - common */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = res/common;
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Copy Files - common";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F821CC72F0ABD8C002425AE /* Copy Files - lesson2 */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
 			dstPath = res/lesson2;
 			dstSubfolderSpec = 16;
 			files = (
 			);
+			name = "Copy Files - lesson2";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0F821D052F0AC56A002425AE /* Embed Libraries */ = {
@@ -50,13 +73,14 @@
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0FD8A11D2F0D66FE00A38130 /* CopyFiles */ = {
+		0FD8A11D2F0D66FE00A38130 /* Copy Files - lesson3 */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = res/lesson3;
 			dstSubfolderSpec = 16;
 			files = (
 			);
+			name = "Copy Files - lesson3";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -79,6 +103,7 @@
 				"thirdparty/glfw_3_4/lib-win64-vc2022/glfw3_mt.lib",
 				"thirdparty/glfw_3_4/lib-win64-vc2022/glfw3.lib",
 				"thirdparty/glfw_3_4/lib-win64-vc2022/glfw3dll.lib",
+				thirdparty/glm_0_9_8/detail/dummy.cpp,
 				thirdparty/glm/detail/dummy.cpp,
 			);
 			target = 0F821CC82F0ABD8C002425AE /* learnopenglagain */;
@@ -86,9 +111,9 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		0D01E01D2F155B510048DEC4 /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */ = {
+		0D01E01D2F155B510048DEC4 /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson4" phase from "learnopenglagain" target */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 0D01E01B2F155B3C0048DEC4 /* CopyFiles */;
+			buildPhase = 0D01E01B2F155B3C0048DEC4 /* Copy Files - lesson4 */;
 			membershipExceptions = (
 				res/lesson4/awesomeface.png,
 				res/lesson4/container.jpg,
@@ -97,14 +122,31 @@
 				res/lesson4/wall.jpg,
 			);
 		};
-		0D01E0302F1562920048DEC4 /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */ = {
+		0D01E0302F1562920048DEC4 /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson5" phase from "learnopenglagain" target */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 0D01E02E2F1562860048DEC4 /* CopyFiles */;
+			buildPhase = 0D01E02E2F1562860048DEC4 /* Copy Files - lesson5 */;
 			membershipExceptions = (
 				res/lesson5/awesomeface.png,
 				res/lesson5/container.jpg,
 				res/lesson5/frag.glsl,
 				res/lesson5/vert.glsl,
+			);
+		};
+		0DAAD7CA2F2A623C00B3595F /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson6" phase from "learnopenglagain" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 0DAAD7C82F2A621F00B3595F /* Copy Files - lesson6 */;
+			membershipExceptions = (
+				res/lesson6/frag.glsl,
+				res/lesson6/vert.glsl,
+			);
+		};
+		0DAAD7CE2F2A627A00B3595F /* Exceptions for "learnopenglagain" folder in "Copy Files - common" phase from "learnopenglagain" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 0DAAD7CC2F2A626300B3595F /* Copy Files - common */;
+			membershipExceptions = (
+				res/common/awesomeface.png,
+				res/common/container.jpg,
+				res/common/wall.jpg,
 			);
 		};
 		0F821D062F0AC56A002425AE /* Exceptions for "learnopenglagain" folder in "Embed Libraries" phase from "learnopenglagain" target */ = {
@@ -117,17 +159,17 @@
 				"thirdparty/glfw_3_4/lib-universal/libglfw.3.dylib",
 			);
 		};
-		0F821D682F0CED97002425AE /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */ = {
+		0F821D682F0CED97002425AE /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson2" phase from "learnopenglagain" target */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 0F821CC72F0ABD8C002425AE /* CopyFiles */;
+			buildPhase = 0F821CC72F0ABD8C002425AE /* Copy Files - lesson2 */;
 			membershipExceptions = (
 				res/lesson2/test_frag.glsl,
 				res/lesson2/test_vert.glsl,
 			);
 		};
-		0FD8A11F2F0D671000A38130 /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */ = {
+		0FD8A11F2F0D671000A38130 /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson3" phase from "learnopenglagain" target */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 0FD8A11D2F0D66FE00A38130 /* CopyFiles */;
+			buildPhase = 0FD8A11D2F0D66FE00A38130 /* Copy Files - lesson3 */;
 			membershipExceptions = (
 				res/lesson3/awesomeface.png,
 				res/lesson3/container.jpg,
@@ -144,10 +186,12 @@
 			exceptions = (
 				0F821D1B2F0C09D2002425AE /* Exceptions for "learnopenglagain" folder in "learnopenglagain" target */,
 				0F821D062F0AC56A002425AE /* Exceptions for "learnopenglagain" folder in "Embed Libraries" phase from "learnopenglagain" target */,
-				0F821D682F0CED97002425AE /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */,
-				0FD8A11F2F0D671000A38130 /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */,
-				0D01E01D2F155B510048DEC4 /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */,
-				0D01E0302F1562920048DEC4 /* Exceptions for "learnopenglagain" folder in "Copy Files" phase from "learnopenglagain" target */,
+				0DAAD7CE2F2A627A00B3595F /* Exceptions for "learnopenglagain" folder in "Copy Files - common" phase from "learnopenglagain" target */,
+				0F821D682F0CED97002425AE /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson2" phase from "learnopenglagain" target */,
+				0FD8A11F2F0D671000A38130 /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson3" phase from "learnopenglagain" target */,
+				0D01E01D2F155B510048DEC4 /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson4" phase from "learnopenglagain" target */,
+				0D01E0302F1562920048DEC4 /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson5" phase from "learnopenglagain" target */,
+				0DAAD7CA2F2A623C00B3595F /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson6" phase from "learnopenglagain" target */,
 			);
 			path = learnopenglagain;
 			sourceTree = "<group>";
@@ -205,10 +249,12 @@
 				0F821CC52F0ABD8C002425AE /* Sources */,
 				0F821CC62F0ABD8C002425AE /* Frameworks */,
 				0F821D052F0AC56A002425AE /* Embed Libraries */,
-				0F821CC72F0ABD8C002425AE /* CopyFiles */,
-				0FD8A11D2F0D66FE00A38130 /* CopyFiles */,
-				0D01E01B2F155B3C0048DEC4 /* CopyFiles */,
-				0D01E02E2F1562860048DEC4 /* CopyFiles */,
+				0DAAD7CC2F2A626300B3595F /* Copy Files - common */,
+				0F821CC72F0ABD8C002425AE /* Copy Files - lesson2 */,
+				0FD8A11D2F0D66FE00A38130 /* Copy Files - lesson3 */,
+				0D01E01B2F155B3C0048DEC4 /* Copy Files - lesson4 */,
+				0D01E02E2F1562860048DEC4 /* Copy Files - lesson5 */,
+				0DAAD7C82F2A621F00B3595F /* Copy Files - lesson6 */,
 			);
 			buildRules = (
 			);
