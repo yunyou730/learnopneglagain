@@ -53,6 +53,16 @@
 			name = "Copy Files - common";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0DAAD7DD2F2A661800B3595F /* Copy Files - lesson7 */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = res/lesson7;
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Copy Files - lesson7";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F821CC72F0ABD8C002425AE /* Copy Files - lesson2 */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -149,6 +159,14 @@
 				res/common/wall.jpg,
 			);
 		};
+		0DAAD7DF2F2A662600B3595F /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson7" phase from "learnopenglagain" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 0DAAD7DD2F2A661800B3595F /* Copy Files - lesson7 */;
+			membershipExceptions = (
+				res/lesson7/frag.glsl,
+				res/lesson7/vert.glsl,
+			);
+		};
 		0F821D062F0AC56A002425AE /* Exceptions for "learnopenglagain" folder in "Embed Libraries" phase from "learnopenglagain" target */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
 			attributesByRelativePath = {
@@ -192,6 +210,7 @@
 				0D01E01D2F155B510048DEC4 /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson4" phase from "learnopenglagain" target */,
 				0D01E0302F1562920048DEC4 /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson5" phase from "learnopenglagain" target */,
 				0DAAD7CA2F2A623C00B3595F /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson6" phase from "learnopenglagain" target */,
+				0DAAD7DF2F2A662600B3595F /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson7" phase from "learnopenglagain" target */,
 			);
 			path = learnopenglagain;
 			sourceTree = "<group>";
@@ -255,6 +274,7 @@
 				0D01E01B2F155B3C0048DEC4 /* Copy Files - lesson4 */,
 				0D01E02E2F1562860048DEC4 /* Copy Files - lesson5 */,
 				0DAAD7C82F2A621F00B3595F /* Copy Files - lesson6 */,
+				0DAAD7DD2F2A661800B3595F /* Copy Files - lesson7 */,
 			);
 			buildRules = (
 			);

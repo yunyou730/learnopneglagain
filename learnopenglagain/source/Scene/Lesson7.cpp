@@ -1,18 +1,18 @@
-#include "Lesson6.h"
+#include "Lesson7.h"
 #include <glad/glad.h>
 #include "../Common/ShaderFileReader.h"
 #include "../Common/Texture2D.h"
 
 namespace ayy {
-namespace l6 {
+namespace l7 {
 
-Lesson6::Lesson6(int width, int height)
+Lesson7::Lesson7(int width, int height)
 	:BaseScene(width, height)
 {
 
 }
 
-Lesson6::~Lesson6()
+Lesson7::~Lesson7()
 {
     delete _program;
     _program = nullptr;
@@ -28,7 +28,7 @@ Lesson6::~Lesson6()
 }
 
 
-void Lesson6::onEnter()
+void Lesson7::onEnter()
 {
     glClearColor(0.5,0.8,0.2,1.0);
 
@@ -36,23 +36,23 @@ void Lesson6::onEnter()
     initVertexData();
     initTexture();
 
-    glm::mat4 identity(1.0f);
-	_view = glm::translate(identity, glm::vec3(0.0f, 0.0f, -3.0f));
 	_projection = glm::perspective(glm::radians(45.0f), (float)_windowWidth / (float)_windowHeight, 0.1f, 100.0f);
 }
 
-void Lesson6::initVertexData()
+void Lesson7::initVertexData()
 {
     // vertex data
     glGenVertexArrays(1, &_VAO);
     glGenBuffers(1, &_VBO);
+    //glGenBuffers(1, &_EBO);
 
     // 1. bind VAO
     glBindVertexArray(_VAO);
     // 2. bind VBO, fill buffer data
     glBindBuffer(GL_ARRAY_BUFFER, _VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(_boxVertices), _boxVertices, GL_STATIC_DRAW);
-    // 3. Set Vertex attribute for binding VBO
+
+    // 4. Set Vertex attribute for binding VBO
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,
         sizeof(VertexAttributePosUV),
         (void*)offsetof(VertexAttributePosUV, x)); // 位置属性
@@ -64,15 +64,15 @@ void Lesson6::initVertexData()
     glEnableVertexAttribArray(1);   // 开启 UV
 }
 
-void Lesson6::initShader()
+void Lesson7::initShader()
 {
-    std::string vertShaderCode = ShaderFileReader::readShaderCode("res/lesson6/vert.glsl");
-    std::string fragShaderCode = ShaderFileReader::readShaderCode("res/lesson6/frag.glsl");
+    std::string vertShaderCode = ShaderFileReader::readShaderCode("res/lesson7/vert.glsl");
+    std::string fragShaderCode = ShaderFileReader::readShaderCode("res/lesson7/frag.glsl");
     _program = new ShaderProgram(vertShaderCode, fragShaderCode);
     _program->compileLink();
 }
 
-void Lesson6::initTexture()
+void Lesson7::initTexture()
 {
     _texture = new Texture2D();
     _texture->load("res/common/container.jpg");
@@ -82,13 +82,27 @@ void Lesson6::initTexture()
 }
 
 
-void Lesson6::onUpdate(float deltaTime)
+void Lesson7::onUpdate(float deltaTime)
 {
     _rotDeg += deltaTime * 35.0f;
     _projection = glm::perspective(glm::radians(45.0f), (float)_windowWidth / (float)_windowHeight, 0.1f, 100.0f);
+    
+    
+    // 用 极坐标 确认自动移动的相机的位置
+    _camPosRotateDeg += deltaTime * 30.0f;
+    
+    glm::vec3 cameraPos;
+    cameraPos.x = glm::sin(glm::radians(_camPosRotateDeg)) * _camPosRadius;
+    cameraPos.y = 0.0f;
+    cameraPos.z = glm::cos(glm::radians(_camPosRotateDeg)) * _camPosRadius;
+    
+    
+    _view = glm::lookAt(cameraPos,
+                        glm::vec3(0.0f,0.3f,0.0f),      // look to point
+                        glm::vec3(0.0f,1.0f,0.0f));     // 用于计算 view matrix 过程中,使用的临时 up
 }
 
-void Lesson6::onRender()
+void Lesson7::onRender()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -125,10 +139,13 @@ void Lesson6::onRender()
         glBindVertexArray(_VAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);
     }
+
+    
+
     glBindVertexArray(0);
 }
 
-void Lesson6::onExit()
+void Lesson7::onExit()
 {
     
 }
