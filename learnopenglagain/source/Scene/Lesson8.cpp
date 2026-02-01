@@ -1,18 +1,19 @@
-#include "Lesson7.h"
+#include "Lesson8.h"
 #include <glad/glad.h>
 #include "../Common/ShaderFileReader.h"
 #include "../Common/Texture2D.h"
+#include <GLFW/glfw3.h>
 
 namespace ayy {
-namespace l7 {
+namespace l8 {
 
-Lesson7::Lesson7(GLFWwindow* window,int width, int height)
+Lesson8::Lesson8(GLFWwindow* window,int width, int height)
 	:BaseScene(window,width, height)
 {
 
 }
 
-Lesson7::~Lesson7()
+Lesson8::~Lesson8()
 {
     delete _program;
     _program = nullptr;
@@ -28,7 +29,7 @@ Lesson7::~Lesson7()
 }
 
 
-void Lesson7::onEnter()
+void Lesson8::onEnter()
 {
     glClearColor(0.5,0.8,0.2,1.0);
 
@@ -39,7 +40,7 @@ void Lesson7::onEnter()
 	_projection = glm::perspective(glm::radians(45.0f), (float)_windowWidth / (float)_windowHeight, 0.1f, 100.0f);
 }
 
-void Lesson7::initVertexData()
+void Lesson8::initVertexData()
 {
     // vertex data
     glGenVertexArrays(1, &_VAO);
@@ -64,7 +65,7 @@ void Lesson7::initVertexData()
     glEnableVertexAttribArray(1);   // 开启 UV
 }
 
-void Lesson7::initShader()
+void Lesson8::initShader()
 {
     std::string vertShaderCode = ShaderFileReader::readShaderCode("res/lesson7/vert.glsl");
     std::string fragShaderCode = ShaderFileReader::readShaderCode("res/lesson7/frag.glsl");
@@ -72,7 +73,7 @@ void Lesson7::initShader()
     _program->compileLink();
 }
 
-void Lesson7::initTexture()
+void Lesson8::initTexture()
 {
     _texture = new Texture2D();
     _texture->load("res/common/container.jpg");
@@ -82,27 +83,105 @@ void Lesson7::initTexture()
 }
 
 
-void Lesson7::onUpdate(float deltaTime)
+void Lesson8::onUpdate(float deltaTime)
 {
+    // update object rotation
     _rotDeg += deltaTime * 35.0f;
+    
+    // update camera control
+    updateCameraControl(deltaTime);
+
+    // refresh matrix
     _projection = glm::perspective(glm::radians(45.0f), (float)_windowWidth / (float)_windowHeight, 0.1f, 100.0f);
-    
-    
-    // 用 极坐标 确认自动移动的相机的位置
-    _camPosRotateDeg += deltaTime * 30.0f;
-    
-    glm::vec3 cameraPos;
-    cameraPos.x = glm::sin(glm::radians(_camPosRotateDeg)) * _camPosRadius;
-    cameraPos.y = 0.0f;
-    cameraPos.z = glm::cos(glm::radians(_camPosRotateDeg)) * _camPosRadius;
-    
-    
-    _view = glm::lookAt(cameraPos,
-                        glm::vec3(0.0f,0.3f,0.0f),      // look to point
-                        glm::vec3(0.0f,1.0f,0.0f));     // 用于计算 view matrix 过程中,使用的临时 up
+    _view = glm::lookAt(_cameraPos,_cameraPos + _cameraFront,_cameraUp);
 }
 
-void Lesson7::onRender()
+
+void Lesson8::updateCameraControl(float deltaTime)
+{
+    float moveOffset = _cameraMoveSpeed * deltaTime;
+    float rotateOffset = _cameraRotateSpeed * deltaTime;
+
+    if (glfwGetKey(getWindow(), GLFW_KEY_W) == GLFW_PRESS)
+    {
+        _cameraPos += moveOffset * _cameraFront;
+    }
+    if (glfwGetKey(getWindow(), GLFW_KEY_S) == GLFW_PRESS)
+    {
+        _cameraPos -= moveOffset * _cameraFront;
+    }
+    if (glfwGetKey(getWindow(), GLFW_KEY_A) == GLFW_PRESS)
+    {
+        _cameraPos -= glm::normalize(glm::cross(_cameraFront, _cameraUp)) * moveOffset;
+    }
+    if (glfwGetKey(getWindow(), GLFW_KEY_D) == GLFW_PRESS)
+    {
+        _cameraPos += glm::normalize(glm::cross(_cameraFront, _cameraUp)) * moveOffset;
+    }
+    if (glfwGetKey(getWindow(), GLFW_KEY_LEFT) == GLFW_PRESS)
+    {
+        // 向左转
+        glm::mat4 mat(1.0f);
+        mat = glm::rotate(mat,glm::radians(rotateOffset),_cameraUp);
+        
+        glm::vec4 front;
+        front.x = _cameraFront.x;
+        front.y = _cameraFront.y;
+        front.z = _cameraFront.z;
+        front.w = 0.0f;
+        front = mat * front;
+        _cameraFront = front;
+    }
+    if (glfwGetKey(getWindow(), GLFW_KEY_RIGHT) == GLFW_PRESS)
+    {
+        // 向右转
+        glm::mat4 mat(1.0f);
+        mat = glm::rotate(mat,glm::radians(-rotateOffset),_cameraUp);
+        
+        glm::vec4 front;
+        front.x = _cameraFront.x;
+        front.y = _cameraFront.y;
+        front.z = _cameraFront.z;
+        front.w = 0.0f;
+        front = mat * front;
+        _cameraFront = front;
+    }
+    if (glfwGetKey(getWindow(), GLFW_KEY_UP) == GLFW_PRESS)
+    {
+        glm::vec3 right = glm::normalize(glm::cross(_cameraFront, _cameraUp));
+        
+        // 仰头
+        glm::mat4 mat(1.0f);
+        mat = glm::rotate(mat,glm::radians(rotateOffset),right);
+        
+        glm::vec4 front;
+        front.x = _cameraFront.x;
+        front.y = _cameraFront.y;
+        front.z = _cameraFront.z;
+        front.w = 0.0f;
+        front = mat * front;
+        _cameraFront = front;
+    }
+    if (glfwGetKey(getWindow(), GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        // 低头
+        glm::vec3 right = glm::normalize(glm::cross(_cameraFront, _cameraUp));
+        
+        glm::mat4 mat(1.0f);
+        mat = glm::rotate(mat,glm::radians(-rotateOffset),right);
+        
+        glm::vec4 front;
+        front.x = _cameraFront.x;
+        front.y = _cameraFront.y;
+        front.z = _cameraFront.z;
+        front.w = 0.0f;
+        front = mat * front;
+        _cameraFront = front;
+    }
+
+}
+
+void Lesson8::onRender()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -115,6 +194,9 @@ void Lesson7::onRender()
     _program->useProgram();
 	_program->setInt("u_MainTex", 0);   // bind texture unit 0 to shader uniform
     _program->setInt("u_SecondTex", 1); // bind texture unit 1 to shader uniform
+    
+//    glEnable(GL_CULL_FACE);
+//    glCullFace(GL_BACK);
 
     for (int i = 0;i < 10;i++)
     {
@@ -145,7 +227,7 @@ void Lesson7::onRender()
     glBindVertexArray(0);
 }
 
-void Lesson7::onExit()
+void Lesson8::onExit()
 {
     
 }

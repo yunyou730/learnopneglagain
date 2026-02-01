@@ -20,7 +20,7 @@ struct VertexAttributePosUV
 class Lesson7 : public BaseScene
 {
 public:
-    Lesson7(int width, int height);
+    Lesson7(GLFWwindow* window,int width, int height);
     virtual ~Lesson7();
     
     virtual void onEnter() override;

@@ -17,7 +17,7 @@ struct VertexAttribute
 class Lesson3 : public BaseScene
 {
 public:
-    Lesson3(int width, int height);
+    Lesson3(GLFWwindow* window,int width, int height);
     virtual ~Lesson3();
     
     virtual void onEnter() override;

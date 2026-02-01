@@ -9,7 +9,7 @@ namespace ayy {
 
 class Texture2D;
 
-namespace l6 {
+namespace l8 {
 
 struct VertexAttributePosUV
 {
@@ -17,11 +17,11 @@ struct VertexAttributePosUV
     float u, v;
 };
 
-class Lesson6 : public BaseScene
+class Lesson8 : public BaseScene
 {
 public:
-    Lesson6(GLFWwindow* window,int width, int height);
-    virtual ~Lesson6();
+    Lesson8(GLFWwindow* window,int width, int height);
+    virtual ~Lesson8();
     
     virtual void onEnter() override;
     virtual void onUpdate(float deltaTime) override;
@@ -32,6 +32,9 @@ private:
     void initVertexData();
     void initShader();
     void initTexture();
+    
+private:
+    void updateCameraControl(float deltaTime);
     
 private:
     VertexAttributePosUV _boxVertices[36] = {
@@ -91,8 +94,7 @@ private:
     // mvp matrix
     glm::mat4 _view;
     glm::mat4 _projection;
-
-
+    
     // positions
     glm::vec3 _cubePositions[10] = {
         glm::vec3(0.0f,  0.0f,  0.0f),
@@ -106,6 +108,13 @@ private:
         glm::vec3(1.5f,  0.2f, -1.5f),
         glm::vec3(-1.3f,  1.0f, -1.5f)
     };
+    
+    glm::vec3 _cameraPos = glm::vec3(0.0f,0.0f,5.0f);
+    glm::vec3 _cameraFront = glm::vec3(0.0f,0.0f,-1.0f);
+    glm::vec3 _cameraUp = glm::vec3(0.0f,1.0f,0.0f);
+    float _cameraMoveSpeed = 5.0f;
+    float _cameraRotateSpeed = 60.0f;
+    
 };
 }
 }

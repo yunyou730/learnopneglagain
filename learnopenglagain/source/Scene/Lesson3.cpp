@@ -6,8 +6,8 @@
 namespace ayy {
 namespace lesson3 {
 
-Lesson3::Lesson3(int width, int height)
-	:BaseScene(width, height)
+Lesson3::Lesson3(GLFWwindow* window,int width, int height)
+	:BaseScene(window,width, height)
 {
 
 }

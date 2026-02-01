@@ -21,8 +21,8 @@ void main()
 } 
 )";
 
-Lesson1::Lesson1(int width,int height)
-	:BaseScene(width, height)
+Lesson1::Lesson1(GLFWwindow* window,int width,int height)
+	:BaseScene(window,width, height)
 {
     glGenVertexArrays(1,&_VAO);
     glGenBuffers(1,&_VBO);

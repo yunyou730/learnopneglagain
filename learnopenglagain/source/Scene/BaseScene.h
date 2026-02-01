@@ -1,12 +1,15 @@
 #pragma once
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 namespace ayy
 {
     class BaseScene
     {
     public:
-        BaseScene(int width,int height)
-            :_windowWidth(width)
+        BaseScene(GLFWwindow* window,int width,int height)
+            :_window(window)
+            ,_windowWidth(width)
             ,_windowHeight(height)
         {
             
@@ -24,10 +27,14 @@ namespace ayy
             _windowWidth = width;
             _windowHeight = height;
         }
+        
+    protected:
+        GLFWwindow* getWindow() const { return _window;}
 
     protected:
         int _windowWidth = 0;
 		int _windowHeight = 0;
+        GLFWwindow* _window = nullptr;
     };
 }
 
