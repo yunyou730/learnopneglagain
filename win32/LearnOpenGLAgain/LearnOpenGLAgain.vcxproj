@@ -137,6 +137,8 @@
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson4.cpp" />
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson5.cpp" />
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson6.cpp" />
+    <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson7.cpp" />
+    <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson8.cpp" />
     <ClCompile Include="..\..\learnopenglagain\thirdparty\glad\src\glad.c" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +152,8 @@
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson4.h" />
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson5.h" />
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson6.h" />
+    <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson7.h" />
+    <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson8.h" />
     <ClInclude Include="..\..\learnopenglagain\thirdparty\glad\include\glad\glad.h" />
     <ClInclude Include="..\..\learnopenglagain\thirdparty\glad\include\KHR\khrplatform.h" />
   </ItemGroup>
