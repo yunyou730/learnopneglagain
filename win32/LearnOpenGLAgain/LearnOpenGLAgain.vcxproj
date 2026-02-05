@@ -126,6 +126,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\learnopenglagain\source\Common\Camera.cpp" />
     <ClCompile Include="..\..\learnopenglagain\source\Common\ShaderFileReader.cpp" />
     <ClCompile Include="..\..\learnopenglagain\source\Common\ShaderProgram.cpp" />
     <ClCompile Include="..\..\learnopenglagain\source\Common\Texture2D.cpp" />
@@ -142,6 +143,7 @@
     <ClCompile Include="..\..\learnopenglagain\thirdparty\glad\src\glad.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\learnopenglagain\source\Common\Camera.h" />
     <ClInclude Include="..\..\learnopenglagain\source\Common\ShaderFileReader.h" />
     <ClInclude Include="..\..\learnopenglagain\source\Common\ShaderProgram.h" />
     <ClInclude Include="..\..\learnopenglagain\source\Common\Texture2D.h" />

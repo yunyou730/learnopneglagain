@@ -86,6 +86,9 @@
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson7.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\learnopenglagain\source\Common\Camera.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\learnopenglagain\thirdparty\glad\include\glad\glad.h">
@@ -129,6 +132,9 @@
     </ClInclude>
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson8.h">
       <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\learnopenglagain\source\Common\Camera.h">
+      <Filter>Header Files\Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

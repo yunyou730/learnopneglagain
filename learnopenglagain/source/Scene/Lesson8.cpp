@@ -10,7 +10,7 @@ namespace l8 {
 Lesson8::Lesson8(GLFWwindow* window,int width, int height)
 	:BaseScene(window,width, height)
 {
-
+    _camera = new Camera();
 }
 
 Lesson8::~Lesson8()
@@ -26,6 +26,10 @@ Lesson8::~Lesson8()
 
     delete _subTexture;
 	_subTexture = nullptr;
+
+    delete _camera;
+    _camera = nullptr;
+
 }
 
 
@@ -36,8 +40,6 @@ void Lesson8::onEnter()
     initShader();
     initVertexData();
     initTexture();
-
-	_projection = glm::perspective(glm::radians(45.0f), (float)_windowWidth / (float)_windowHeight, 0.1f, 100.0f);
 }
 
 void Lesson8::initVertexData()
@@ -85,100 +87,9 @@ void Lesson8::initTexture()
 
 void Lesson8::onUpdate(float deltaTime)
 {
-    // update object rotation
-    _rotDeg += deltaTime * 35.0f;
-    
-    // update camera control
-    updateCameraControl(deltaTime);
-
-    // refresh matrix
-    _projection = glm::perspective(glm::radians(45.0f), (float)_windowWidth / (float)_windowHeight, 0.1f, 100.0f);
-    _view = glm::lookAt(_cameraPos,_cameraPos + _cameraFront,_cameraUp);
-}
-
-
-void Lesson8::updateCameraControl(float deltaTime)
-{
-    float moveOffset = _cameraMoveSpeed * deltaTime;
-    float rotateOffset = _cameraRotateSpeed * deltaTime;
-
-    if (glfwGetKey(getWindow(), GLFW_KEY_W) == GLFW_PRESS)
-    {
-        _cameraPos += moveOffset * _cameraFront;
-    }
-    if (glfwGetKey(getWindow(), GLFW_KEY_S) == GLFW_PRESS)
-    {
-        _cameraPos -= moveOffset * _cameraFront;
-    }
-    if (glfwGetKey(getWindow(), GLFW_KEY_A) == GLFW_PRESS)
-    {
-        _cameraPos -= glm::normalize(glm::cross(_cameraFront, _cameraUp)) * moveOffset;
-    }
-    if (glfwGetKey(getWindow(), GLFW_KEY_D) == GLFW_PRESS)
-    {
-        _cameraPos += glm::normalize(glm::cross(_cameraFront, _cameraUp)) * moveOffset;
-    }
-    if (glfwGetKey(getWindow(), GLFW_KEY_LEFT) == GLFW_PRESS)
-    {
-        // 向左转
-        glm::mat4 mat(1.0f);
-        mat = glm::rotate(mat,glm::radians(rotateOffset),_cameraUp);
-        
-        glm::vec4 front;
-        front.x = _cameraFront.x;
-        front.y = _cameraFront.y;
-        front.z = _cameraFront.z;
-        front.w = 0.0f;
-        front = mat * front;
-        _cameraFront = front;
-    }
-    if (glfwGetKey(getWindow(), GLFW_KEY_RIGHT) == GLFW_PRESS)
-    {
-        // 向右转
-        glm::mat4 mat(1.0f);
-        mat = glm::rotate(mat,glm::radians(-rotateOffset),_cameraUp);
-        
-        glm::vec4 front;
-        front.x = _cameraFront.x;
-        front.y = _cameraFront.y;
-        front.z = _cameraFront.z;
-        front.w = 0.0f;
-        front = mat * front;
-        _cameraFront = front;
-    }
-    if (glfwGetKey(getWindow(), GLFW_KEY_UP) == GLFW_PRESS)
-    {
-        glm::vec3 right = glm::normalize(glm::cross(_cameraFront, _cameraUp));
-        
-        // 仰头
-        glm::mat4 mat(1.0f);
-        mat = glm::rotate(mat,glm::radians(rotateOffset),right);
-        
-        glm::vec4 front;
-        front.x = _cameraFront.x;
-        front.y = _cameraFront.y;
-        front.z = _cameraFront.z;
-        front.w = 0.0f;
-        front = mat * front;
-        _cameraFront = front;
-    }
-    if (glfwGetKey(getWindow(), GLFW_KEY_DOWN) == GLFW_PRESS)
-    {
-        // 低头
-        glm::vec3 right = glm::normalize(glm::cross(_cameraFront, _cameraUp));
-        
-        glm::mat4 mat(1.0f);
-        mat = glm::rotate(mat,glm::radians(-rotateOffset),right);
-        
-        glm::vec4 front;
-        front.x = _cameraFront.x;
-        front.y = _cameraFront.y;
-        front.z = _cameraFront.z;
-        front.w = 0.0f;
-        front = mat * front;
-        _cameraFront = front;
-    }
-
+    _rotDeg += deltaTime * 35.0f;       // update object rotation
+    _camera->updateMatrix(_windowWidth, _windowHeight);
+    _camera->updateControl(getWindow(), deltaTime);
 }
 
 void Lesson8::onRender()
@@ -209,12 +120,12 @@ void Lesson8::onRender()
         // MVP 矩阵
         unsigned int loc = glGetUniformLocation(_program->getProgram(), "u_Model");
         glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(model));
-
+        
         loc = glGetUniformLocation(_program->getProgram(), "u_View");
-        glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(_view));
+        glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(_camera->getViewMatrix()));
 
         loc = glGetUniformLocation(_program->getProgram(), "u_Projection");
-        glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(_projection));
+        glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(_camera->getProjectionMatrix()));
 
         // Do DrawCall
         glEnable(GL_DEPTH_TEST);
