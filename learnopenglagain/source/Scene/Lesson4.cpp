@@ -2,7 +2,7 @@
 #include <glad/glad.h>
 #include "../Common/ShaderFileReader.h"
 #include "../Common/Texture2D.h"
-#include <glm_0_9_8/glm.hpp>
+#include <glm/glm.hpp>
 
 namespace ayy {
 namespace l4 {
