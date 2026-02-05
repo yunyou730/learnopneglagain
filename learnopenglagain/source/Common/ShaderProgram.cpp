@@ -73,10 +73,20 @@ void ShaderProgram::useProgram()
     glUseProgram(_program);
 }
 
-void ShaderProgram::setInt(const std::string& propName, int value)
+void ShaderProgram::setInt(const std::string& propName, int value) const
 {
     int location = glGetUniformLocation(_program,propName.c_str());
 	glUniform1i(location, value);
+}
+
+void ShaderProgram::setVec3(const std::string& name, const glm::vec3& value) const
+{
+    glUniform3fv(glGetUniformLocation(_program, name.c_str()), 1, &value[0]);
+}
+
+void ShaderProgram::setMat4(const std::string& name, const glm::mat4& mat) const
+{
+    glUniformMatrix4fv(glGetUniformLocation(_program, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
 }

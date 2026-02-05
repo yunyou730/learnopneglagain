@@ -31,6 +31,9 @@ public:
 private:
     void initVertexData();
     void initShader();
+
+    void drawBox();
+    void drawLight();
 private:
     VertexAttributePos _boxVertices[36] = {
         { -0.5f, -0.5f, -0.5f,},
@@ -77,12 +80,17 @@ private:
     };
 
     unsigned int _VBO;
-    unsigned int _VAO;
+
+    unsigned int _boxVAO;
+    unsigned int _lightVAO;
     
     ShaderProgram* _lightShader = nullptr;
     ShaderProgram* _boxShader = nullptr;
 
     Camera* _camera = nullptr;
+
+	glm::vec3 _lightPos = glm::vec3(1.2f, 1.0f, 2.0f);
+    glm::vec3 _lightColor = glm::vec3(1.0,0.7,1.0);
 };
 }
 }
