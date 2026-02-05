@@ -140,6 +140,7 @@
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson6.cpp" />
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson7.cpp" />
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson8.cpp" />
+    <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson9.cpp" />
     <ClCompile Include="..\..\learnopenglagain\thirdparty\glad\src\glad.c" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +157,7 @@
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson6.h" />
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson7.h" />
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson8.h" />
+    <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson9.h" />
     <ClInclude Include="..\..\learnopenglagain\thirdparty\glad\include\glad\glad.h" />
     <ClInclude Include="..\..\learnopenglagain\thirdparty\glad\include\KHR\khrplatform.h" />
   </ItemGroup>
@@ -166,6 +168,12 @@
     <None Include="..\..\learnopenglagain\res\lesson5\vert.glsl" />
     <None Include="..\..\learnopenglagain\res\lesson6\frag.glsl" />
     <None Include="..\..\learnopenglagain\res\lesson6\vert.glsl" />
+    <None Include="..\..\learnopenglagain\res\lesson7\frag.glsl" />
+    <None Include="..\..\learnopenglagain\res\lesson7\vert.glsl" />
+    <None Include="..\..\learnopenglagain\res\lesson9\color_object_frag.glsl" />
+    <None Include="..\..\learnopenglagain\res\lesson9\color_object_vert.glsl" />
+    <None Include="..\..\learnopenglagain\res\lesson9\light_frag.glsl" />
+    <None Include="..\..\learnopenglagain\res\lesson9\light_vert.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\learnopenglagain\res\common\awesomeface.png" />

@@ -89,10 +89,6 @@ private:
     
     float _rotDeg = 0.0f;
 
-    //// mvp matrix
-    //glm::mat4 _view;
-    //glm::mat4 _projection;
-    
     // positions
     glm::vec3 _cubePositions[10] = {
         glm::vec3(0.0f,  0.0f,  0.0f),

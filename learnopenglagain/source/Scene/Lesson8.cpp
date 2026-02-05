@@ -132,9 +132,6 @@ void Lesson8::onRender()
         glBindVertexArray(_VAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);
     }
-
-    
-
     glBindVertexArray(0);
 }
 

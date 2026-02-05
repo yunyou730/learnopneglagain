@@ -53,7 +53,8 @@ bool ShaderProgram::compileLink()
     glAttachShader(_program,_fragmentShader);
     glLinkProgram(_program);
     glGetProgramiv(_program, GL_LINK_STATUS, &success);
-    if(!success) {
+    if(!success) 
+    {
         glGetProgramInfoLog(_program, 512, NULL, infoLog);
         std::cout << "ERROR::SHADER::PROGRAM::LINK_FAILED\n" << infoLog << std::endl;
         return false;

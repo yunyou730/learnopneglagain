@@ -42,6 +42,12 @@
     <Filter Include="res\common">
       <UniqueIdentifier>{804c631e-e359-4afa-abfd-70998d3acaa7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="res\lesson7">
+      <UniqueIdentifier>{0a3360e0-4193-4754-8e6b-81dfeb3700de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res\lesson9">
+      <UniqueIdentifier>{7b679358-dfeb-4656-bcd4-495cd57faf89}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\learnopenglagain\source\main.cpp">
@@ -88,6 +94,9 @@
     </ClCompile>
     <ClCompile Include="..\..\learnopenglagain\source\Common\Camera.cpp">
       <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson9.cpp">
+      <Filter>Source Files\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +145,9 @@
     <ClInclude Include="..\..\learnopenglagain\source\Common\Camera.h">
       <Filter>Header Files\Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson9.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\learnopenglagain\res\lesson4\vert.glsl">
@@ -155,6 +167,24 @@
     </None>
     <None Include="..\..\learnopenglagain\res\lesson6\frag.glsl">
       <Filter>res\lesson6</Filter>
+    </None>
+    <None Include="..\..\learnopenglagain\res\lesson7\frag.glsl">
+      <Filter>res\lesson7</Filter>
+    </None>
+    <None Include="..\..\learnopenglagain\res\lesson7\vert.glsl">
+      <Filter>res\lesson7</Filter>
+    </None>
+    <None Include="..\..\learnopenglagain\res\lesson9\color_object_frag.glsl">
+      <Filter>res\lesson9</Filter>
+    </None>
+    <None Include="..\..\learnopenglagain\res\lesson9\color_object_vert.glsl">
+      <Filter>res\lesson9</Filter>
+    </None>
+    <None Include="..\..\learnopenglagain\res\lesson9\light_frag.glsl">
+      <Filter>res\lesson9</Filter>
+    </None>
+    <None Include="..\..\learnopenglagain\res\lesson9\light_vert.glsl">
+      <Filter>res\lesson9</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
