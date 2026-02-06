@@ -31,7 +31,7 @@ Lesson9::~Lesson9()
 
 void Lesson9::onEnter()
 {
-    glClearColor(0.5,0.8,0.2,1.0);
+    glClearColor(0.1,0.1,0.1,1.0);
     initShader();
     initVertexData();
 }
@@ -48,11 +48,18 @@ void Lesson9::initVertexData()
         // 2. bind VBO, fill buffer data
         glBindBuffer(GL_ARRAY_BUFFER, _VBO);
         glBufferData(GL_ARRAY_BUFFER, sizeof(_boxVertices), _boxVertices, GL_STATIC_DRAW);
+        
         // 3. Set Vertex attribute for binding VBO
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,
             sizeof(VertexAttributePos),
             (void*)offsetof(VertexAttributePos, x)); // 位置属性
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 
+            sizeof(VertexAttributePos),
+            (void*)offsetof(VertexAttributePos,nx));    // 法线属性
+
+        // 4. 开启 顶点属性
         glEnableVertexAttribArray(0);   // 开启 位置属性
+		glEnableVertexAttribArray(1);   // 开启 法线属性
     }
     glBindVertexArray(0);
 
@@ -71,8 +78,8 @@ void Lesson9::initVertexData()
 
 void Lesson9::initShader()
 {
-    std::string vertShaderCode = ShaderFileReader::readShaderCode("res/lesson9/color_object_vert.glsl");
-    std::string fragShaderCode = ShaderFileReader::readShaderCode("res/lesson9/color_object_frag.glsl");
+    std::string vertShaderCode = ShaderFileReader::readShaderCode("res/lesson9/lit_object_vert.glsl");
+    std::string fragShaderCode = ShaderFileReader::readShaderCode("res/lesson9/lit_object_frag.glsl");
     _boxShader = new ShaderProgram(vertShaderCode, fragShaderCode);
     _boxShader->compileLink();
 
@@ -91,9 +98,10 @@ void Lesson9::onUpdate(float deltaTime)
 void Lesson9::onRender()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glDisable(GL_CULL_FACE);
+    glEnable(GL_DEPTH_TEST);
     drawBox();
     drawLight();
-    
 }
 
 void Lesson9::drawBox()
@@ -107,6 +115,7 @@ void Lesson9::drawBox()
     _boxShader->setMat4("u_Projection", _camera->getProjectionMatrix());
     _boxShader->setVec3("u_ObjectColor", glm::vec3(1.0f, 0.5f, 0.31f));
     _boxShader->setVec3("u_LightColor", _lightColor);
+    _boxShader->setVec3("u_LightPos",_lightPos);
     glBindVertexArray(_boxVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);

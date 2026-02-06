@@ -22,10 +22,14 @@ glm::mat4& Camera::getProjectionMatrix()
 
 void Camera::updateMatrix(float viewWidth, float viewHeight)
 {
+    const float EPSILON = 1e-6f; // 极小值，避免浮点精度问题
     _viewMatrix = glm::lookAt(_cameraPos, _cameraPos + _cameraFront, _cameraUp);
-    _projectionMatrix = glm::perspective(glm::radians(_fovY), viewWidth / viewHeight, _nearPlane, _farPlane);
+    if (glm::abs(viewHeight) > EPSILON)     // 避免 除0异常
+    {
+        float aspect = viewWidth / viewHeight;
+        _projectionMatrix = glm::perspective(glm::radians(_fovY), aspect, _nearPlane, _farPlane);
+    }
 }
-
 
 void Camera::updateControl(GLFWwindow* window,float deltaTime)
 {
@@ -50,7 +54,7 @@ void Camera::updateControl(GLFWwindow* window,float deltaTime)
     }
     if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
     {
-        // ����ת
+        // 向左转
         glm::mat4 mat(1.0f);
         mat = glm::rotate(mat, glm::radians(rotateOffset), _cameraUp);
 
@@ -64,7 +68,7 @@ void Camera::updateControl(GLFWwindow* window,float deltaTime)
     }
     if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
     {
-        // ����ת
+        // 向右转
         glm::mat4 mat(1.0f);
         mat = glm::rotate(mat, glm::radians(-rotateOffset), _cameraUp);
 
@@ -80,7 +84,7 @@ void Camera::updateControl(GLFWwindow* window,float deltaTime)
     {
         glm::vec3 right = glm::normalize(glm::cross(_cameraFront, _cameraUp));
 
-        // ��ͷ
+        // 仰头
         glm::mat4 mat(1.0f);
         mat = glm::rotate(mat, glm::radians(rotateOffset), right);
 
@@ -94,7 +98,7 @@ void Camera::updateControl(GLFWwindow* window,float deltaTime)
     }
     if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
     {
-        // ��ͷ
+        // 低头
         glm::vec3 right = glm::normalize(glm::cross(_cameraFront, _cameraUp));
 
         glm::mat4 mat(1.0f);

@@ -170,10 +170,10 @@
     <None Include="..\..\learnopenglagain\res\lesson6\vert.glsl" />
     <None Include="..\..\learnopenglagain\res\lesson7\frag.glsl" />
     <None Include="..\..\learnopenglagain\res\lesson7\vert.glsl" />
-    <None Include="..\..\learnopenglagain\res\lesson9\color_object_frag.glsl" />
-    <None Include="..\..\learnopenglagain\res\lesson9\color_object_vert.glsl" />
     <None Include="..\..\learnopenglagain\res\lesson9\light_frag.glsl" />
     <None Include="..\..\learnopenglagain\res\lesson9\light_vert.glsl" />
+    <None Include="..\..\learnopenglagain\res\lesson9\lit_object_frag.glsl" />
+    <None Include="..\..\learnopenglagain\res\lesson9\lit_object_vert.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\learnopenglagain\res\common\awesomeface.png" />
