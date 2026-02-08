@@ -124,7 +124,6 @@ void Lesson10::drawBox()
     _boxShader->setVec3("u_Material.specular",0.5f,0.5f,0.5f);
     _boxShader->setFloat("u_Material.shininess",64.0f);
     
-    
     // 光源颜色
     _lightColor.x = sin(glfwGetTime() * 2.0f);
     _lightColor.y = sin(glfwGetTime() * 0.7f);
@@ -132,12 +131,10 @@ void Lesson10::drawBox()
     glm::vec3 diffuseColor = _lightColor * glm::vec3(0.5f);
     glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f);
     
-    
     _boxShader->setVec3("u_Light.ambient",ambientColor);
     _boxShader->setVec3("u_Light.diffuse",diffuseColor);
     _boxShader->setVec3("u_Light.specular",1.0f,1.0f,1.0f);
     _boxShader->setVec3("u_Light.position",_lightPos);
-    
     
     glBindVertexArray(_boxVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
