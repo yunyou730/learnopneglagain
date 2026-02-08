@@ -17,7 +17,9 @@ public:
     unsigned int getProgram() const { return _program;}
 
     void setInt(const std::string& propName,int value) const;
+    void setFloat(const std::string& propName,float value) const;
     void setVec3(const std::string& name, const glm::vec3& value) const;
+    void setVec3(const std::string& name, float x,float y,float z) const;
     void setMat4(const std::string& name, const glm::mat4& mat) const;
 
 private:

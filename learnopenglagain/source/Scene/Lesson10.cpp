@@ -93,6 +93,9 @@ void Lesson10::onUpdate(float deltaTime)
 {
     _camera->updateMatrix(_windowWidth, _windowHeight);
     _camera->updateControl(getWindow(), deltaTime);
+    
+    
+    
 }
 
 void Lesson10::onRender()
@@ -113,11 +116,27 @@ void Lesson10::drawBox()
     _boxShader->setMat4("u_Model", model);
     _boxShader->setMat4("u_View", _camera->getViewMatrix());
     _boxShader->setMat4("u_Projection", _camera->getProjectionMatrix());
-    _boxShader->setVec3("u_ObjectColor", glm::vec3(1.0f, 0.5f, 0.31f));
-    _boxShader->setVec3("u_LightColor", _lightColor);
-    _boxShader->setVec3("u_LightPos",_lightPos);
     
     _boxShader->setVec3("u_ViewPos",_camera->getPos());
+    
+    _boxShader->setVec3("u_Material.ambient",1.0f,0.5f,0.31f);
+    _boxShader->setVec3("u_Material.diffuse",1.0f,0.5f,0.31f);
+    _boxShader->setVec3("u_Material.specular",0.5f,0.5f,0.5f);
+    _boxShader->setFloat("u_Material.shininess",64.0f);
+    
+    
+    // 光源颜色
+    _lightColor.x = sin(glfwGetTime() * 2.0f);
+    _lightColor.y = sin(glfwGetTime() * 0.7f);
+    _lightColor.z = sin(glfwGetTime() * 1.3f);
+    glm::vec3 diffuseColor = _lightColor * glm::vec3(0.5f);
+    glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f);
+    
+    
+    _boxShader->setVec3("u_Light.ambient",ambientColor);
+    _boxShader->setVec3("u_Light.diffuse",diffuseColor);
+    _boxShader->setVec3("u_Light.specular",1.0f,1.0f,1.0f);
+    _boxShader->setVec3("u_Light.position",_lightPos);
     
     
     glBindVertexArray(_boxVAO);
@@ -136,6 +155,7 @@ void Lesson10::drawLight()
     _lightShader->setMat4("u_View", _camera->getViewMatrix());
     _lightShader->setMat4("u_Projection", _camera->getProjectionMatrix());
     _lightShader->setVec3("u_LightColor", _lightColor);
+    
     glBindVertexArray(_lightVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);

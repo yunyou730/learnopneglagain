@@ -97,7 +97,7 @@ private:
     Camera* _camera = nullptr;
 
 	glm::vec3 _lightPos = glm::vec3(1.2f, 1.0f, 2.0f);
-    glm::vec3 _lightColor = glm::vec3(1.0,1.0,1.0);
+    glm::vec3 _lightColor = glm::vec3(1.0f,1.0f,1.0f);
 };
 }
 }
