@@ -23,6 +23,8 @@ public:
 
     glm::mat4& getViewMatrix();
     glm::mat4& getProjectionMatrix();
+    
+    glm::vec3 getPos() const { return _cameraPos;}
 
 private:
 	// View matrix parameters

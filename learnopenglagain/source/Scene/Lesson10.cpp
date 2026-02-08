@@ -1,19 +1,19 @@
-#include "Lesson9.h"
+#include "Lesson10.h"
 #include <glad/glad.h>
 #include "../Common/ShaderFileReader.h"
 #include "../Common/Texture2D.h"
 #include <GLFW/glfw3.h>
 
 namespace ayy {
-namespace l9 {
+namespace l10 {
 
-Lesson9::Lesson9(GLFWwindow* window,int width, int height)
+Lesson10::Lesson10(GLFWwindow* window,int width, int height)
 	:BaseScene(window,width, height)
 {
     _camera = new Camera();
 }
 
-Lesson9::~Lesson9()
+Lesson10::~Lesson10()
 {
     delete _lightShader;
     _lightShader = nullptr;
@@ -29,14 +29,14 @@ Lesson9::~Lesson9()
     _camera = nullptr;
 }
 
-void Lesson9::onEnter()
+void Lesson10::onEnter()
 {
     glClearColor(0.1,0.1,0.1,1.0);
     initShader();
     initVertexData();
 }
 
-void Lesson9::initVertexData()
+void Lesson10::initVertexData()
 {
     // Box VAO
     glGenVertexArrays(1, &_boxVAO); 
@@ -76,10 +76,10 @@ void Lesson9::initVertexData()
     glBindVertexArray(0);
 }
 
-void Lesson9::initShader()
+void Lesson10::initShader()
 {
-    std::string vertShaderCode = ShaderFileReader::readShaderCode("res/lesson9/lit_object_vert.glsl");
-    std::string fragShaderCode = ShaderFileReader::readShaderCode("res/lesson9/lit_object_frag.glsl");
+    std::string vertShaderCode = ShaderFileReader::readShaderCode("res/lesson10/lit_material_vert.glsl");
+    std::string fragShaderCode = ShaderFileReader::readShaderCode("res/lesson10/lit_material_frag.glsl");
     _boxShader = new ShaderProgram(vertShaderCode, fragShaderCode);
     _boxShader->compileLink();
 
@@ -89,13 +89,13 @@ void Lesson9::initShader()
     _lightShader->compileLink();
 }
 
-void Lesson9::onUpdate(float deltaTime)
+void Lesson10::onUpdate(float deltaTime)
 {
     _camera->updateMatrix(_windowWidth, _windowHeight);
     _camera->updateControl(getWindow(), deltaTime);
 }
 
-void Lesson9::onRender()
+void Lesson10::onRender()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glDisable(GL_CULL_FACE);
@@ -104,7 +104,7 @@ void Lesson9::onRender()
     drawLight();
 }
 
-void Lesson9::drawBox()
+void Lesson10::drawBox()
 {
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
@@ -125,7 +125,7 @@ void Lesson9::drawBox()
     glBindVertexArray(0);
 }
 
-void Lesson9::drawLight()
+void Lesson10::drawLight()
 {
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, _lightPos);
@@ -141,7 +141,7 @@ void Lesson9::drawLight()
     glBindVertexArray(0);
 }
 
-void Lesson9::onExit()
+void Lesson10::onExit()
 {
     
 }

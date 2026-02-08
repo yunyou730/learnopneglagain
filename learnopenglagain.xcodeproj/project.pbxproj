@@ -63,6 +63,26 @@
 			name = "Copy Files - lesson7";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0DAAD7F42F37962700B3595F /* Copy Files - lesson9 */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = res/lesson9;
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Copy Files - lesson9";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0DAAD8102F38DA6300B3595F /* Copy Files - lesson10 */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = res/lesson10;
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Copy Files - lesson10";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F821CC72F0ABD8C002425AE /* Copy Files - lesson2 */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -113,7 +133,6 @@
 				"thirdparty/glfw_3_4/lib-win64-vc2022/glfw3_mt.lib",
 				"thirdparty/glfw_3_4/lib-win64-vc2022/glfw3.lib",
 				"thirdparty/glfw_3_4/lib-win64-vc2022/glfw3dll.lib",
-				thirdparty/glm_0_9_8/detail/dummy.cpp,
 				thirdparty/glm/detail/dummy.cpp,
 			);
 			target = 0F821CC82F0ABD8C002425AE /* learnopenglagain */;
@@ -167,6 +186,24 @@
 				res/lesson7/vert.glsl,
 			);
 		};
+		0DAAD7F62F37963400B3595F /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson9" phase from "learnopenglagain" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 0DAAD7F42F37962700B3595F /* Copy Files - lesson9 */;
+			membershipExceptions = (
+				res/lesson9/light_frag.glsl,
+				res/lesson9/light_vert.glsl,
+				res/lesson9/lit_object_frag.glsl,
+				res/lesson9/lit_object_vert.glsl,
+			);
+		};
+		0DAAD8122F38DA7500B3595F /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson10" phase from "learnopenglagain" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 0DAAD8102F38DA6300B3595F /* Copy Files - lesson10 */;
+			membershipExceptions = (
+				res/lesson10/lit_material_frag.glsl,
+				res/lesson10/lit_material_vert.glsl,
+			);
+		};
 		0F821D062F0AC56A002425AE /* Exceptions for "learnopenglagain" folder in "Embed Libraries" phase from "learnopenglagain" target */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
 			attributesByRelativePath = {
@@ -211,6 +248,8 @@
 				0D01E0302F1562920048DEC4 /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson5" phase from "learnopenglagain" target */,
 				0DAAD7CA2F2A623C00B3595F /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson6" phase from "learnopenglagain" target */,
 				0DAAD7DF2F2A662600B3595F /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson7" phase from "learnopenglagain" target */,
+				0DAAD7F62F37963400B3595F /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson9" phase from "learnopenglagain" target */,
+				0DAAD8122F38DA7500B3595F /* Exceptions for "learnopenglagain" folder in "Copy Files - lesson10" phase from "learnopenglagain" target */,
 			);
 			path = learnopenglagain;
 			sourceTree = "<group>";
@@ -275,6 +314,8 @@
 				0D01E02E2F1562860048DEC4 /* Copy Files - lesson5 */,
 				0DAAD7C82F2A621F00B3595F /* Copy Files - lesson6 */,
 				0DAAD7DD2F2A661800B3595F /* Copy Files - lesson7 */,
+				0DAAD7F42F37962700B3595F /* Copy Files - lesson9 */,
+				0DAAD8102F38DA6300B3595F /* Copy Files - lesson10 */,
 			);
 			buildRules = (
 			);
