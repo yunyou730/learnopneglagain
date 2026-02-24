@@ -134,6 +134,7 @@
     <ClCompile Include="..\..\learnopenglagain\source\Scene\BaseScene.cpp" />
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson1.cpp" />
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson10.cpp" />
+    <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson11.cpp" />
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson2.cpp" />
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson3.cpp" />
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson4.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="..\..\learnopenglagain\source\Scene\BaseScene.h" />
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson1.h" />
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson10.h" />
+    <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson11.h" />
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson2.h" />
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson3.h" />
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson4.h" />
@@ -164,8 +166,12 @@
     <ClInclude Include="..\..\learnopenglagain\thirdparty\glad\include\KHR\khrplatform.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\learnopenglagain\res\common\light_frag.glsl" />
+    <None Include="..\..\learnopenglagain\res\common\light_vert.glsl" />
     <None Include="..\..\learnopenglagain\res\lesson10\lit_material_frag.glsl" />
     <None Include="..\..\learnopenglagain\res\lesson10\lit_material_vert.glsl" />
+    <None Include="..\..\learnopenglagain\res\lesson11\lit_mat_with_tex.frag" />
+    <None Include="..\..\learnopenglagain\res\lesson11\lit_mat_with_tex.vert" />
     <None Include="..\..\learnopenglagain\res\lesson4\frag.glsl" />
     <None Include="..\..\learnopenglagain\res\lesson4\vert.glsl" />
     <None Include="..\..\learnopenglagain\res\lesson5\frag.glsl" />
@@ -174,8 +180,6 @@
     <None Include="..\..\learnopenglagain\res\lesson6\vert.glsl" />
     <None Include="..\..\learnopenglagain\res\lesson7\frag.glsl" />
     <None Include="..\..\learnopenglagain\res\lesson7\vert.glsl" />
-    <None Include="..\..\learnopenglagain\res\lesson9\light_frag.glsl" />
-    <None Include="..\..\learnopenglagain\res\lesson9\light_vert.glsl" />
     <None Include="..\..\learnopenglagain\res\lesson9\lit_object_frag.glsl" />
     <None Include="..\..\learnopenglagain\res\lesson9\lit_object_vert.glsl" />
   </ItemGroup>
@@ -183,6 +187,8 @@
     <Image Include="..\..\learnopenglagain\res\common\awesomeface.png" />
     <Image Include="..\..\learnopenglagain\res\common\container.jpg" />
     <Image Include="..\..\learnopenglagain\res\common\wall.jpg" />
+    <Image Include="..\..\learnopenglagain\res\lesson11\container2.png" />
+    <Image Include="..\..\learnopenglagain\res\lesson11\container2_specular.png" />
     <Image Include="..\..\learnopenglagain\res\lesson5\awesomeface.png" />
     <Image Include="..\..\learnopenglagain\res\lesson5\container.jpg" />
   </ItemGroup>

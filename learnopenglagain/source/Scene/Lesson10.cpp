@@ -83,8 +83,8 @@ void Lesson10::initShader()
     _boxShader = new ShaderProgram(vertShaderCode, fragShaderCode);
     _boxShader->compileLink();
 
-    vertShaderCode = ShaderFileReader::readShaderCode("res/lesson9/light_vert.glsl");
-    fragShaderCode = ShaderFileReader::readShaderCode("res/lesson9/light_frag.glsl");
+    vertShaderCode = ShaderFileReader::readShaderCode("res/common/light_vert.glsl");
+    fragShaderCode = ShaderFileReader::readShaderCode("res/common/light_frag.glsl");
     _lightShader = new ShaderProgram(vertShaderCode, fragShaderCode);
     _lightShader->compileLink();
 }
@@ -93,9 +93,6 @@ void Lesson10::onUpdate(float deltaTime)
 {
     _camera->updateMatrix(_windowWidth, _windowHeight);
     _camera->updateControl(getWindow(), deltaTime);
-    
-    
-    
 }
 
 void Lesson10::onRender()

@@ -1,19 +1,19 @@
-#include "Lesson9.h"
+#include "Lesson11.h"
 #include <glad/glad.h>
 #include "../Common/ShaderFileReader.h"
 #include "../Common/Texture2D.h"
 #include <GLFW/glfw3.h>
 
 namespace ayy {
-namespace l9 {
+namespace l11 {
 
-Lesson9::Lesson9(GLFWwindow* window,int width, int height)
+Lesson11::Lesson11(GLFWwindow* window,int width, int height)
 	:BaseScene(window,width, height)
 {
     _camera = new Camera();
 }
 
-Lesson9::~Lesson9()
+Lesson11::~Lesson11()
 {
     delete _lightShader;
     _lightShader = nullptr;
@@ -27,16 +27,23 @@ Lesson9::~Lesson9()
 
     delete _camera;
     _camera = nullptr;
+
+    delete _diffuseTexture;
+    _diffuseTexture = nullptr;
+
+    delete _specularTexture;
+    _specularTexture = nullptr;
 }
 
-void Lesson9::onEnter()
+void Lesson11::onEnter()
 {
     glClearColor(0.1,0.1,0.1,1.0);
-    initShader();
     initVertexData();
+    initShader();
+    initTexture();
 }
 
-void Lesson9::initVertexData()
+void Lesson11::initVertexData()
 {
     // Box VAO
     glGenVertexArrays(1, &_boxVAO); 
@@ -56,10 +63,14 @@ void Lesson9::initVertexData()
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 
             sizeof(VertexAttributePos),
             (void*)offsetof(VertexAttributePos,nx));    // 法线属性
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE,
+            sizeof(VertexAttributePos),
+            (void*)offsetof(VertexAttributePos, u));    // uv属性
 
         // 4. 开启 顶点属性
         glEnableVertexAttribArray(0);   // 开启 位置属性
 		glEnableVertexAttribArray(1);   // 开启 法线属性
+		glEnableVertexAttribArray(2);   // 开启 uv 属性
     }
     glBindVertexArray(0);
 
@@ -76,10 +87,10 @@ void Lesson9::initVertexData()
     glBindVertexArray(0);
 }
 
-void Lesson9::initShader()
+void Lesson11::initShader()
 {
-    std::string vertShaderCode = ShaderFileReader::readShaderCode("res/lesson9/lit_object_vert.glsl");
-    std::string fragShaderCode = ShaderFileReader::readShaderCode("res/lesson9/lit_object_frag.glsl");
+    std::string vertShaderCode = ShaderFileReader::readShaderCode("res/lesson11/lit_mat_with_tex.vert");
+    std::string fragShaderCode = ShaderFileReader::readShaderCode("res/lesson11/lit_mat_with_tex.frag");
     _boxShader = new ShaderProgram(vertShaderCode, fragShaderCode);
     _boxShader->compileLink();
 
@@ -89,13 +100,22 @@ void Lesson9::initShader()
     _lightShader->compileLink();
 }
 
-void Lesson9::onUpdate(float deltaTime)
+void Lesson11::initTexture()
+{
+    _diffuseTexture = new Texture2D();
+    _diffuseTexture->load("res/lesson11/container2.png");
+
+    _specularTexture = new Texture2D();
+    _specularTexture->load("res/lesson11/container2_specular.png");
+}
+
+void Lesson11::onUpdate(float deltaTime)
 {
     _camera->updateMatrix(_windowWidth, _windowHeight);
     _camera->updateControl(getWindow(), deltaTime);
 }
 
-void Lesson9::onRender()
+void Lesson11::onRender()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glDisable(GL_CULL_FACE);
@@ -104,28 +124,50 @@ void Lesson9::onRender()
     drawLight();
 }
 
-void Lesson9::drawBox()
+void Lesson11::drawBox()
 {
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+
+    glActiveTexture(GL_TEXTURE0);           // texture unit 0:diffuse texture
+    glBindTexture(GL_TEXTURE_2D, _diffuseTexture->getTextureHandle());
+
+    glActiveTexture(GL_TEXTURE1);           // texture unit 1:specular texture
+    glBindTexture(GL_TEXTURE_2D, _specularTexture->getTextureHandle());
+
 
     _boxShader->useProgram();
     _boxShader->setMat4("u_Model", model);
     _boxShader->setMat4("u_View", _camera->getViewMatrix());
     _boxShader->setMat4("u_Projection", _camera->getProjectionMatrix());
-    _boxShader->setVec3("u_ObjectColor", glm::vec3(1.0f, 0.5f, 0.31f));
-    _boxShader->setVec3("u_LightColor", _lightColor);
-    _boxShader->setVec3("u_LightPos",_lightPos);
     
     _boxShader->setVec3("u_ViewPos",_camera->getPos());
     
+
+    // @miao @todo
+    _boxShader->setInt("u_Material.diffuse", 0);
+
+    _boxShader->setVec3("u_Material.specular",0.5f,0.5f,0.5f);
+    _boxShader->setFloat("u_Material.shininess",64.0f);
+    
+    // 光源颜色
+    _lightColor.x = sin(glfwGetTime() * 2.0f);
+    _lightColor.y = sin(glfwGetTime() * 0.7f);
+    _lightColor.z = sin(glfwGetTime() * 1.3f);
+    glm::vec3 diffuseColor = _lightColor * glm::vec3(0.5f);
+    glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f);
+    
+    _boxShader->setVec3("u_Light.ambient",ambientColor);
+    _boxShader->setVec3("u_Light.diffuse",diffuseColor);
+    _boxShader->setVec3("u_Light.specular",1.0f,1.0f,1.0f);
+    _boxShader->setVec3("u_Light.position",_lightPos);
     
     glBindVertexArray(_boxVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
 }
 
-void Lesson9::drawLight()
+void Lesson11::drawLight()
 {
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, _lightPos);
@@ -136,12 +178,13 @@ void Lesson9::drawLight()
     _lightShader->setMat4("u_View", _camera->getViewMatrix());
     _lightShader->setMat4("u_Projection", _camera->getProjectionMatrix());
     _lightShader->setVec3("u_LightColor", _lightColor);
+    
     glBindVertexArray(_lightVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
 }
 
-void Lesson9::onExit()
+void Lesson11::onExit()
 {
     
 }

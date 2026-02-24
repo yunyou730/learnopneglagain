@@ -51,6 +51,9 @@
     <Filter Include="res\lesson10">
       <UniqueIdentifier>{fb368244-4e75-40e8-ab7e-9cf2dc75004c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="res\lesson11">
+      <UniqueIdentifier>{9f8dccb1-b9c9-4514-ba24-536ca4622b7d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\learnopenglagain\source\main.cpp">
@@ -102,6 +105,9 @@
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
     <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson10.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\learnopenglagain\source\Scene\Lesson11.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
   </ItemGroup>
@@ -157,6 +163,9 @@
     <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson10.h">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\learnopenglagain\source\Scene\Lesson11.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\learnopenglagain\res\lesson4\vert.glsl">
@@ -183,12 +192,6 @@
     <None Include="..\..\learnopenglagain\res\lesson7\vert.glsl">
       <Filter>res\lesson7</Filter>
     </None>
-    <None Include="..\..\learnopenglagain\res\lesson9\light_frag.glsl">
-      <Filter>res\lesson9</Filter>
-    </None>
-    <None Include="..\..\learnopenglagain\res\lesson9\light_vert.glsl">
-      <Filter>res\lesson9</Filter>
-    </None>
     <None Include="..\..\learnopenglagain\res\lesson9\lit_object_frag.glsl">
       <Filter>res\lesson9</Filter>
     </None>
@@ -200,6 +203,18 @@
     </None>
     <None Include="..\..\learnopenglagain\res\lesson10\lit_material_vert.glsl">
       <Filter>res\lesson10</Filter>
+    </None>
+    <None Include="..\..\learnopenglagain\res\lesson11\lit_mat_with_tex.vert">
+      <Filter>res\lesson11</Filter>
+    </None>
+    <None Include="..\..\learnopenglagain\res\lesson11\lit_mat_with_tex.frag">
+      <Filter>res\lesson11</Filter>
+    </None>
+    <None Include="..\..\learnopenglagain\res\common\light_frag.glsl">
+      <Filter>res\common</Filter>
+    </None>
+    <None Include="..\..\learnopenglagain\res\common\light_vert.glsl">
+      <Filter>res\common</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +232,12 @@
     </Image>
     <Image Include="..\..\learnopenglagain\res\common\container.jpg">
       <Filter>res\common</Filter>
+    </Image>
+    <Image Include="..\..\learnopenglagain\res\lesson11\container2.png">
+      <Filter>res\lesson11</Filter>
+    </Image>
+    <Image Include="..\..\learnopenglagain\res\lesson11\container2_specular.png">
+      <Filter>res\lesson11</Filter>
     </Image>
   </ItemGroup>
 </Project>

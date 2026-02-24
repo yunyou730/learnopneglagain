@@ -13,6 +13,7 @@
 #include "Scene/Lesson8.h"
 #include "Scene/Lesson9.h"
 #include "Scene/Lesson10.h"
+#include "Scene/Lesson11.h"
 
 ayy::BaseScene* g_scene = nullptr;
 
@@ -70,7 +71,8 @@ int main(int argc, const char * argv[]) {
     //g_scene = new ayy::l7::Lesson7(windowWidth, windowHeight);
     //g_scene = new ayy::l8::Lesson8(window,windowWidth, windowHeight);
     //g_scene = new ayy::l9::Lesson9(window, windowWidth, windowHeight);
-    g_scene = new ayy::l10::Lesson10(window, windowWidth, windowHeight);
+    //g_scene = new ayy::l10::Lesson10(window, windowWidth, windowHeight);
+    g_scene = new ayy::l11::Lesson11(window, windowWidth, windowHeight);
     g_scene->onEnter();
     
     while(!glfwWindowShouldClose(window))

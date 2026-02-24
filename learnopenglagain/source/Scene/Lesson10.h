@@ -6,6 +6,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "../Common/Camera.h"
 
+/*
+    Reference: https://learnopengl-cn.github.io/02%20Lighting/03%20Materials/
+*/
 namespace ayy {
 
 class Texture2D;

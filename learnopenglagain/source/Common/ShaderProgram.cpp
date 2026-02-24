@@ -44,6 +44,7 @@ bool ShaderProgram::compileLink()
     {
         glGetShaderInfoLog(_fragmentShader, 512, NULL, infoLog);
         std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
+        assert(false);
         return false;
     }
     
@@ -57,6 +58,7 @@ bool ShaderProgram::compileLink()
     {
         glGetProgramInfoLog(_program, 512, NULL, infoLog);
         std::cout << "ERROR::SHADER::PROGRAM::LINK_FAILED\n" << infoLog << std::endl;
+        assert(false);
         return false;
     }
     
